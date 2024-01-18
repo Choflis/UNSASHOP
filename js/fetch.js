@@ -1,22 +1,25 @@
 // params son los id del formulario
 // script es la ubicacion del archio perl, tiene que terminar en .pl
 // func siempre debe tener el parametro (response)
-
-function fetch2(params, script, func) {
+function fetch2(html_params, extra_params, script, func) {
     let xhttp = new XMLHttpRequest();
     let query = "";
-    for (let i = 0; i < params.length; i++) {
+    for (let i = 0; i < html_params.length; i++) {
         try {
-            let param_value = document.getElementById(params[i]);
-            query += params[i] + "=" + param_value + "&";
+            let param_value = document.getElementById(html_params[i]).value;
+            query += html_params[i] + "=" + param_value + "&";
         } catch (err) {
-            alert ("Error obteniendo " + params[i]);
+            alert ("Error obteniendo " + html_params[i]);
         }
+    }
+
+    for (let i = 0; i < extra_params.length; i++) {
+        query += extra_params[i] + "&";
     }
 
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            let response = xhttp.responseXML;
+            let response = xhttp.responseXML || new Document();
             func(response);
         }
     };
