@@ -1,7 +1,11 @@
 #!perl/bin/perl.exe
 
-# Recibe: nada
-# Retorna: check => <shops> <shop> <id>id</id> <name>nombre</name> <description>descripcion</description> <open>1 o 0</open> </shop> </shops>
+# Recibe: id, action (check [revisa todos los productos], add [añade un producto], remove [remueve un producto])
+#    check => nada
+#    add => id
+#    remove => id
+# Retorna:
+#    check => <products> <product> <name>nombre</name> <description>descripcion</description> <image>imagen</image> <price>precio</price> </product> </products>
 # Check se deberia llamar al cargar la pagina para mostrar todas las tiendas
 
 use strict;
@@ -13,6 +17,7 @@ use DBI;
 
 my $cgi = CGI->new;
 $cgi->charset("UTF-8");
+my $product_id = $cgi->param("id");
 
 my %cookies = CGI::Cookie->fetch();
 my $session_cookie = $cookies{"id_session_cliente"};
@@ -28,23 +33,7 @@ if ($session_cookie) {
     my $session = CGI::Session->load($session_id);
     my $buyer_id = $session->param("session_id");
 
-    my $sth = $dbh->prepare("SELECT `id`, `nombre`, `descripcion`, `abierto` FROM tienda");
+    my $sth = $dbh->prepare("INSERT INTO carrito (usuario_id, producto_id) VALUES ($buyer_id, $product_id)");
     $sth->execute();
-    print_shops($sth);
-}
-
-sub print_shops {
     print($cgi->header("text/xml"));
-    print "<shops>\n";
-    while (my @row = $_[0]->fetchrow_array) {
-        print<<XML;
-        <shop>
-            <id>$row[0]</id>
-            <name>$row[1]</name>
-            <description>$row[2]</row>
-            <open>$row[3]</open>
-        </shop>
-XML
-    }
-    print "</shops>\n"
 }

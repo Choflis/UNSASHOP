@@ -44,8 +44,7 @@ CREATE TABLE `producto` (
   `nombre` varchar(30) NOT NULL,
   `descripcion` varchar(60) NOT NULL,
   `imagen` varchar(30) NOT NULL,
-  `precio` int(11) NOT NULL,
-  `stock` int(11) NOT NULL
+  `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
