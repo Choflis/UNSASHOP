@@ -225,5 +225,4 @@ COMMIT;
 
 -- usuarios
 CREATE USER 'unsashop'@'%' IDENTIFIED BY 'c!YxWLaRyvODyTWr';
-GRANT SELECT ON unsashop.* TO 'unsashop'@'%'
-GRANT INSERT ON unsashop.* TO 'unsashop'@'%'
+GRANT SELECT, INSERT ON 'unsashop'.* TO 'unsashop'@'%'
