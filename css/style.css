@@ -27,7 +27,7 @@ header {
     display: flex;
     padding: 22px 0;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     justify-content: space-between;
 }
@@ -107,7 +107,7 @@ header {
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    max-width: 720px;
+    max-width: 20px;
     background: #fff;
     border: 2px solid #fff;
     transform: translate(-50%, -70%);

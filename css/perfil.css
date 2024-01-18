@@ -1,7 +1,7 @@
   body {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 100;
     line-height: 1.5;
     margin: 0;
     text-align: left;
@@ -15,7 +15,7 @@
     border: 1px solid #ffffff;
     border-radius: 8px;
     padding: 20px;
-    margin: 270px;
+    margin: 50px 270px;
   }
   
   .perfil-header {
