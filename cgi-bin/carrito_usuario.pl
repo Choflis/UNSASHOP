@@ -22,7 +22,7 @@ $cgi->charset("UTF-8");
 my $action = $cgi->param("action");
 
 my %cookies = CGI::Cookie->fetch();
-my $session_cookie = $cookies{"id_session_cliente"};
+my $session_cookie = $cookies{"id_session_usuario"};
 
 if ($session_cookie) {
     my $db_user = "unsashop";

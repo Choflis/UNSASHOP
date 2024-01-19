@@ -15,7 +15,7 @@ my $cgi = CGI->new;
 $cgi->charset("UTF-8");
 
 my %cookies = CGI::Cookie->fetch();
-my $session_cookie = $cookies{"id_session_cliente"};
+my $session_cookie = $cookies{"id_session_usuario"};
 
 my $db_user = "unsashop";
 my $db_password = "c!YxWLaRyvODyTWr";
