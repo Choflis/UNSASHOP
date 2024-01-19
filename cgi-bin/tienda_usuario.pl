@@ -24,10 +24,6 @@ if ($session_cookie) {
     my $dsn = "dbi:mysql:database=unsashop;host=127.0.0.1";
     my $dbh = DBI->connect($dsn, $db_user, $db_password);
 
-    my $session_id = $session_cookie->value();
-    my $session = CGI::Session->load($session_id);
-    my $buyer_id = $session->param("session_id");
-
     my $sth = $dbh->prepare("SELECT `nombre`, `descripcion`, `imagen`, `precio`
                             FROM producto
                             WHERE producto.tienda_id = $id");
