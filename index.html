@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Signup Form</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/carrito.js" async></script>
+    <script src="script.js" defer></script>
+    <title>Productos</title>
 </head>
 <body>
     <header>
@@ -17,17 +20,16 @@
                 <h2><span style="color: #000000;">UNSA</span> <span style="color: #f39a1f;">SHOP</span></h2>
             </a>
             <ul class="links">
-                <span class="close-btn material-symbols-rounded">close</span>
-                <li><a href="#">nose</a></li>
-                <li><a href="#">nose</a></li>
-                <li><a href="#">nose</a></li>
+                <span class="close-btn material-symbols-rounded">Cerrar</span>
+                <li><a href="perfil.html">Perfil</a></li>
+                <button class="login-btn">ACCEDER</button>
             </ul>
-            <button class="login-btn">LOG IN</button>
+            
         </nav>
     </header>
     <div class="blurOverlay"></div>
     <div class="form-popup">
-        <span class="close-btn material-symbols-rounded">close</span>
+        <span class="close-btn material-symbols-rounded">Cerrar</span>
         <div class="form-box login">
             <div class="form-details">
                 <h2>Bienvenido</h2>
@@ -97,5 +99,113 @@
             </div>
         </div>
     </div>
+    <section class="contenedor">
+        <!-- Contenedor de elementos -->
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-item">Pepsi 500 mL</span>
+                <img src="img/pepsi.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.2.40</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Coca Cola 500ml</span>
+                <img src="img/cocacola.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.2.90</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Sprite 500ml</span>
+                <img src="img/sprite.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.2.50</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Inca Kola Sin Azúcar 500ml</span>
+                <img src="img/inkacola.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.2.90</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Oreo Original 108g</span>
+                <img src="img/oreo.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.2.60</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Papas Nativas Inka Chips 135g</span>
+                <img src="img/inka.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.8.00</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Chizitos Sabor Queso 190g</span>
+                <img src="img/chizito.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.6.90</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Battimix Vainilla 146g</span>
+                <img src="img/batimix.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.4.60</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Cono Frio Rico Choco Chips 130ml</span>
+                <img src="img/friorico.jpg" alt="" class="img-item">
+                <span class="precio-item">s/.4.90</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="carrito" id="carrito">
+            <div class="header-carrito">
+                <h2>Tu Carrito</h2>
+            </div>
+
+            <div class="carrito-items">
+                <!-- 
+                <div class="carrito-item">
+                    <img src="img/boxengasse.png" width="80px" alt="">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Box Engasse</span>
+                        <div class="selector-cantidad">
+                            <i class="fa-solid fa-minus restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="fa-solid fa-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$15.000,00</span>
+                    </div>
+                   <span class="btn-eliminar">
+                        <i class="fa-solid fa-trash"></i>
+                   </span>
+                </div>
+                <div class="carrito-item">
+                    <img src="img/skinglam.png" width="80px" alt="">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Skin Glam</span>
+                        <div class="selector-cantidad">
+                            <i class="fa-solid fa-minus restar-cantidad"></i>
+                            <input type="text" value="3" class="carrito-item-cantidad" disabled>
+                            <i class="fa-solid fa-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$18.000,00</span>
+                    </div>
+                   <button class="btn-eliminar">
+                        <i class="fa-solid fa-trash"></i>
+                   </button>
+                </div>
+                 -->
+            </div>
+            <div class="carrito-total">
+                <div class="fila">
+                    <strong>Tu Total</strong>
+                    <span class="carrito-precio-total">
+                        s/.1.00
+                    </span>
+                </div>
+                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
