@@ -10,13 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function actualizarCampos(datos) {
-  var datosArray = datos.split(',');
+  var datosObj = JSON.parse(datos);
 
-  document.getElementById('nombreC').value = datosArray[0];
-  document.getElementById('dni').value = datosArray[1];
-  document.getElementById('celular').value = datosArray[2];
-  document.getElementById('tipoUsuario').value = datosArray[3];
-  document.getElementById('nombreUsuario').value = datosArray[4];
-  document.getElementById('correo').value = datosArray[5];
-  document.getElementById('idTarjeta').value = datosArray[6];
+  document.getElementById('nombreC').value = datosObj[0];
+  document.getElementById('dni').value = datosObj[1];
+  document.getElementById('celular').value = datosObj[2];
+  document.getElementById('tipoUsuario').value = datosObj[3];
+  document.getElementById('nombreUsuario').value = datosObj[4];
+  document.getElementById('correo').value = datosObj[5];
+  document.getElementById('idTarjeta').value = datosObj[6];
 }
+
