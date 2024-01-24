@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilo para el contenedor principal */
+        .form-container {
+            display: flex; /* Utiliza el modelo de caja flexible para alinear los elementos internos */
+            justify-content: space-between; /* Distribuye el espacio entre los elementos internos */
+            max-width: 800px; /* Establece un ancho máximo para el contenedor */
+            margin: auto; /* Centra el contenedor en la página */
+        }
+
+        /* Estilo para las columnas */
+        .form-column {
+            flex-basis: 48%; /* Establece el ancho de cada columna */
+        }
+
+        /* Estilo para el formulario (opcional) */
+        form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Estilo para los elementos del formulario (opcional) */
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>Formulario en Columnas</title>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="form-column">
+        <form>
+            <label for="campo1">Campo 1:</label>
+            <input type="text" id="campo1" name="campo1">
+
+            <label for="campo2">Campo 2:</label>
+            <input type="text" id="campo2" name="campo2">
+        </form>
+    </div>
+
+    <div class="form-column">
+        <form>
+            <label for="campo3">Campo 3:</label>
+            <input type="text" id="campo3" name="campo3">
+
+            <label for="campo4">Campo 4:</label>
+            <input type="text" id="campo4" name="campo4">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
