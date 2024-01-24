@@ -11,8 +11,7 @@
       <div class="perfil-header">
         <h1>Crear cuenta</h1>
       </div>
-      <div class="form-container">
-        <div class="form-column">
+      
             <form class="datos_personales">
                 <div class="datos_personales">
                     <h3>Datos personales</h3>
@@ -42,14 +41,14 @@
                     <input type="password" class="input-label" placeholder="">
                     </div>
                 </div>
-            </form>
-        </div>    
+            
+            
       
       
 
       
-        <div class="form-column">
-            <form class="datos_cuenta">
+       
+            
                 <h3>Datos de cuenta:</h3>
                 <div class="input-group">
                     <label>Tipo de usuario:</label>
@@ -75,11 +74,11 @@
                     <label>Código</label>
                     <input type="text" name="codigo" id="codigo" class="input-label" placeholder="">
                 </div>
-                </form>
-        </div>  
-      </div>  
+                
+        
+       
       
-        <form class="preguntas">
+        
             <div class="preguntas">
                 <h3>Preguntas de seguridad</h3>
                 <div class="input-group">
@@ -92,11 +91,12 @@
                 </div>
                   
             </div>
+            <input type="submit" value="Crear" class="inicio"/>     
+            <input type="button" value="Volver" onclick="volverPerfil"  class="inicio"/>
         </form>
-        <input type="submit" value="Crear" class="inicio"/>     
-        <input type="button" value="Volver" onclick="volverPerfil"  class="inicio"/>
+        
       </div>
     </div>
     <script src="js/perfil.js"></script>
   </body> 
-</html>
+</html>  
