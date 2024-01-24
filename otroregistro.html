@@ -52,7 +52,15 @@
                 <h3>Datos de cuenta:</h3>
                 <div class="input-group">
                     <label>Tipo de usuario:</label>
-                    <input type="text" id="tipoUsuario" name="usuario" class="input-label" placeholder="" >
+                    <div class="radio">
+                        <div class="owner">
+                            <input type="radio" name="tipoUsuario" id="owner_signup">
+                            <label for="owner_signup">Dueño</label>
+                        </div>
+                        <div class="user">
+                            <input type="radio" name="tipoUsuario" id="user_singup" checked>
+                            <label for="user_singup">Cliente</label>
+                        </div>
                 </div>
                 <div class="input-group">
                     <label>Nombre de usuario:</label>
@@ -91,8 +99,9 @@
                 </div>
                   
             </div>
-            <input type="submit" value="Crear" class="inicio"/>     
             <input type="button" value="Volver"  onclick="volverPerfil()"  class="inicio"/>
+            <input type="submit" value="Crear" class="inicio"/>     
+            
             <script>
                 function volverPerfil(){
                     window.location.href = "index.html";
