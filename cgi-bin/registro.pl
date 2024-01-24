@@ -1,9 +1,4 @@
-#!perl/bin/perl.exe
-
-# Recibe: user, password, type (usuario o vendedor), name, card_number, card_expire, card_code
-# Retorna: <errors> <error> <element>elemento</element> <message>mensaje de error</message> </error> </errors>
-# Si errors tiene 0 hijos, todo correcto. Si no se deberia imprimir cada error independientemente
-
+#!"C:\xampp\perl\bin\perl.exe"
 use strict;
 use warnings;
 use CGI;
@@ -14,62 +9,105 @@ use DateTime;
 
 my $cgi = CGI->new;
 $cgi->charset("UTF-8");
-my $user = $cgi->param("nombreC");
+
+my $nombreC = $cgi->param("nombreC");
+my $dni = $cgi->param("dni");
+my $celular = $cgi->param("celular");
+my $nameSesionUsuario = $cgi->param("nameSesionUsuario");
 my $password = $cgi->param("password");
-my $type = $cgi->param("type");
-my $name = $cgi->param("name");
-my $card_number = $cgi->param("card_number");
-my $card_expire = $cgi->param("card_expire");
-my $card_code = $cgi->param("card_code");
+my $password2 = $cgi->param("password2");
+my $tipoUsuario = $cgi->param("tipoUsuario");
+my $nombreUsuario = $cgi->param("nombreUsuario");
+my $correo = $cgi->param("correo");
+my $numero_tarjeta = $cgi->param("numero_tarjeta");
+my $fecha_caducidad_Tarjeta = $cgi->param("fecha_caducidad_Tarjeta");
+my $codigo = $cgi->param("codigo");
+my $pregunta1 = $cgi->param("pregunta1");
+my $pregunta2 = $cgi->param("pregunta2");
 
 my $db_user = "unsashop";
 my $db_password = "c!YxWLaRyvODyTWr";
 my $dsn = "dbi:mysql:database=unsashop;host=127.0.0.1";
 my $dbh = DBI->connect($dsn, $db_user, $db_password);
 
-my %errors; 
-if (!$user || length($user) == 0 || length($user) > 30) {
-    $errors{user} = "Usuario invalido.";
+my %errors;
+
+if (!$nombreC || length($nombreC) == 0 || length($nombreC) > 30) {
+    $errors{nombreC} = "NombreC invalido.";
 }
+
+if (!$dni || length($dni) == 0 || length($dni) > 8) {
+    $errors{dni} = "DNI invalido.";
+}
+
+if (!$celular || length($celular) == 0 || length($celular) > 9) {
+    $errors{celular} = "Número de celular invalido.";
+}
+
+if (!$nameSesionUsuario || length($nameSesionUsuario) == 0 || length($nameSesionUsuario) > 30) {
+    $errors{nameSesionUsuario} = "Nombre de usuario  de inicio de sesión invalido.";
+}
+
 if (!$password || length($password) == 0 || length($password) > 30) {
     $errors{password} = "Clave invalida.";
 }
-if (!$type || ($type ne "usuario" && $type ne "vendedor")) {
-    $errors{type} = "Tipo invalido.";
+
+if ($password ne $password2) {
+    $errors{password2} = "Las claves no coinciden.";
 }
-if (!$name || length($name) == 0 || length($name) > 30) {
-    $errors{name} = "Nombre invalido.";
+
+if (!$tipoUsuario || ($tipoUsuario ne "usuario" && $tipoUsuario ne "vendedor")) {
+    $errors{tipoUsuario} = "Tipo de usuario invalido.";
 }
-if (!$card_number || length($card_number) != 16) {
-    $errors{card_number} = "Número de tarjeta invalido.";
+
+if (!$nombreUsuario || length($nombreUsuario) == 0 || length($nombreUsuario) > 10) {
+    $errors{nombreUsuario} = "Nombre de usuario invalido.";
 }
-my $card_expire_time;
-if ($card_expire && $card_expire =~ /^(\d{4})-(\d{2})-(\d{2})/) {
-    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
+
+if (!$correo || length($correo) == 0 || length($correo) > 50 || $correo !~ /\S+@\S+\.\S+/) {
+    $errors{correo} = "Correo invalido.";
 }
-if (!$card_expire_time || DateTime->now > $card_expire_time) {
-    $errors{card_expire} = "Fecha de expiración invalida.";
+
+if (!$numero_tarjeta || length($numero_tarjeta) == 0 || length($numero_tarjeta) > 16) {
+    $errors{numero_tarjeta} = "Número de tarjeta invalido.";
 }
-if (!$card_code || length($card_code) != 3) {
-    $errors{card_code} = "Código de seguridad invalido.";
+if (!$pregunta1 || length($pregunta1) == 0 || length($pregunta1) > 15) {
+    $errors{pregunta1} = "Respuesta 1 invalida.";
+}
+if (!$pregunta2 || length($pregunta2) == 0 || length($pregunta2) > 15) {
+    $errors{pregunta2} = "Respuesta 2 invalida.";
+}
+
+#my $card_expire_time;
+#if ($fecha_caducidad_Tarjeta && $fecha_caducidad_Tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})/) {
+#    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
+#}
+
+#if (!$card_expire_time || DateTime->now > $card_expire_time) {
+#    $errors{fecha_caducidad_Tarjeta} = "Fecha de expiración de tarjeta invalida.";
+#}
+
+if (!$codigo || length($codigo) != 3) {
+    $errors{codigo} = "Código de seguridad invalido.";
 }
 
 register();
 
 sub register {
     print $cgi->header("text/xml");
+
     if (%errors == 0) {
-        my $sth = $dbh->prepare("INSERT INTO tarjeta (`numero`, `caducidad`, `codigo`, `saldo`) VALUES ('$card_number', '$card_expire', '$card_code', '500')");
+        my $sth = $dbh->prepare("INSERT INTO tarjeta (`numero`, `caducidad`, `codigo`, `saldo`) VALUES ('$numero_tarjeta', '$fecha_caducidad_Tarjeta', '$codigo', '500')");
         $sth->execute;
-        
+
         $sth = $dbh->prepare("SELECT LAST_INSERT_ID()");
         $sth->execute;
         my @card_row = $sth->fetchrow_array;
         my $card_id = $card_row[0];
 
-        $sth = $dbh->prepare("INSERT INTO $type (`login_usuario`, `login_clave`, `nombre`, `tarjeta_id`) VALUES ('$user', '$password', '$name', '$card_id')");
+        $sth = $dbh->prepare("INSERT INTO $tipoUsuario (`login_usuario`, `login_clave`, `nombreC`,`dni`, `celular`, `tipo_usuario`, `nombre_usuario`, `correo`, `tarjeta_id`, `pregunta1`, `pregunta2`) 
+        VALUES ('$nameSesionUsuario', '$password', '$nombreC', '$dni', '$celular', '$tipo_usuario', '$nombreUsuario', '$correo', '$card_id', '$pregunta1', '$pregunta2')");
         $sth->execute;
-        
         return;
     }
     print_errors();
@@ -78,7 +116,7 @@ sub register {
 sub print_errors {
     print "<errors>\n";
     for my $key (keys %errors) {
-        print<<XML;
+        print <<XML;
         <error>
             <element>$key</element>
             <message>$errors{$key}</message>
