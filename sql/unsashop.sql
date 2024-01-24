@@ -55,7 +55,7 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `tarjeta` (
   `id` int(11) NOT NULL,
-  `numero` varchar(16) NOT NULL,
+  `numero` varchar(19) NOT NULL,
   `caducidad` date NOT NULL,
   `codigo` int(3) NOT NULL,
   `saldo` int(11) NOT NULL
@@ -101,10 +101,15 @@ CREATE TABLE `usuario` (
 --
 
 CREATE TABLE `vendedor` (
-  `id` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
   `login_usuario` varchar(30) NOT NULL,
   `login_clave` varchar(30) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
+  `nombreC` varchar(50) NOT NULL,
+  `dni` int(8) NOT NULL,
+  `celular` int(9) NOT NULL,
+  `tipo_usuario` varchar(8) NOT NULL DEFAULT 'Vendedor',
+  `nombre_usuario` varchar(10) NOT NULL,
+  `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -226,16 +231,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- usuarios
-CREATE USER 'unsashop'@'%' IDENTIFIED BY 'c!YxWLaRyvODyTWr';
-GRANT SELECT, INSERT ON 'unsashop'.* TO 'unsashop'@'%'
-
---
--- Ejemplo de insersión de datos de `tarjeta` y `usuario`
---
-INSERT INTO tarjeta (id, numero, caducidad, codigo, saldo)
-VALUES (1, '1234-5678-9012-3456', '2024-12-31', 123, 1000);
-
-INSERT INTO usuario (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id)
-VALUES ('HernanCZ', '123456789', 'Hernan Andy Choquehuanca Zapana', 71647797, 987654321, 'Usuario', 'HernanCZ', 'hchoquehuancaz@unsa.edu.pe', 1);

@@ -16,7 +16,7 @@ my $cgi = CGI->new;
 $cgi->charset("UTF-8");
 my $user = $cgi->param("user");
 my $password = $cgi->param("password");
-my $type = $cgi->param("type");
+my $type = $cgi->param("tipo_usuario_login");
 my $session_time = 86400;
 
 my $db_user = "unsashop";
@@ -65,15 +65,32 @@ sub login {
 }
 
 sub print_errors {
-    print "<errors>\n";
-    for my $key (keys %errors) {
-        print<<XML;
-        <error>
-            <element>$key</element>
-            <message>$errors{$key}</message>
-        </error>
-XML
-    }
-    print "</errors>\n";
-}
+    if (%errors) {
+        print $cgi->header("text/xml");
 
+        if ($cgi->param("login_usuario") && !$errors{login}) {
+            # Usuario ha iniciado sesión
+            print_html_after_login();
+        } else {
+            # Errores durante el inicio de sesión
+            print "<errors>\n";
+            for my $key (keys %errors) {
+                print<<XML;
+                <error>
+                    <element>$key</element>
+                    <message>$errors{$key}</message>
+                </error>
+XML
+            }
+            print "</errors>\n";
+        }
+    }
+}
+sub print_html_after_login {
+    # Coloca aquí el contenido del HTML que deseas mostrar después de iniciar sesión
+    print <<HTML;
+    <!-- Contenido HTML después de iniciar sesión -->
+    <h1>Bienvenido, $user</h1>
+    <!-- Puedes agregar más contenido aquí -->
+HTML
+}

@@ -1,16 +1,37 @@
 #!"C:\xampp\perl\bin\perl.exe"
 use strict;
 use warnings;
+use CGI;
+use CGI::Session;
 use DBI;
 use JSON;
+
+my $cgi = CGI->new;
+$cgi->charset("UTF-8");
+
+my $session_cookie = $cgi->cookie("id_session_usuario") || '';
+my $session = CGI::Session->new(undef, $session_cookie, {Directory => '/tmp'});
+
+my $user_id = $session->param("session_id");
+my $user_type = $session->param("session_type");
 
 my $db_user = "unsashop";
 my $db_password = "c!YxWLaRyvODyTWr";
 my $dsn = "dbi:mysql:database=unsashop;host=127.0.0.1";
-my $dbh = DBI->connect($dsn, $db_user, $db_password);
-my $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM usuario JOIN tarjeta ON usuario.tarjeta_id = tarjeta.id WHERE usuario.ID = 1";
+my $dbh = DBI->connect($dsn, $db_user, $db_password, {RaiseError => 1, PrintError => 1})
+  or die "Error de conexión: $DBI::errstr";
+
+my $query;
+if ($user_type eq 'usuario') {
+    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM usuario JOIN tarjeta ON usuario.tarjeta_id = tarjeta.id WHERE usuario.ID = ?";
+} elsif ($user_type eq 'vendedor') {
+    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM vendedor JOIN tarjeta ON vendedor.tarjeta_id = tarjeta.id WHERE vendedor.ID = ?";
+} else {
+    die "Tipo de cuenta no reconocido: $user_type";
+}
+
 my $sth = $dbh->prepare($query);
-$sth->execute();
+$sth->execute($user_id);
 
 my @datosUsuario = $sth->fetchrow_array;
 $datosUsuario[6] =~ s/(\d{4})(?=\d{4})/$1-/g; 
