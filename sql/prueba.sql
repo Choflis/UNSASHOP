@@ -13,7 +13,7 @@ VALUES (2, '9876-5432-1098-7654', '2024-12-30', 321, 10000);
 
 
 -- USUARIOS:
-INSERT INTO usuario (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id)
+INSERT INTO usuario (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id, pregunta1, pregunta2)
 VALUES (
   'HernanCZU',
   '123456789',
@@ -23,13 +23,15 @@ VALUES (
   'usuario',
   'HernanCZ',
   'hchoquehuancaz@unsa.edu.pe',
+  'lia',
+  'sol',
   (SELECT id FROM tarjeta WHERE numero = '1234-5678-9012-3456')
 );
 
 
 -- VENDEDORES:
 
-INSERT INTO vendedor (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id)
+INSERT INTO vendedor (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id, pregunta1, pregunta2)
 VALUES (
   'HernanCZV',
   '123456789',
@@ -39,5 +41,7 @@ VALUES (
   'vendedor',
   'HernanCZ',
   'hchoquehuancaz@unsa.edu.pe',
+  'lia',
+  'sol',
   (SELECT id FROM tarjeta WHERE numero = '9876-5432-1098-7654')
 );
