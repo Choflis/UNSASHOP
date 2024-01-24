@@ -14,7 +14,7 @@ use DateTime;
 
 my $cgi = CGI->new;
 $cgi->charset("UTF-8");
-my $user = $cgi->param("user");
+my $user = $cgi->param("nombreC");
 my $password = $cgi->param("password");
 my $type = $cgi->param("type");
 my $name = $cgi->param("name");

@@ -20,4 +20,3 @@ function actualizarCampos(datos) {
   document.getElementById('correo').value = datosObj[5];
   document.getElementById('idTarjeta').value = datosObj[6];
 }
-

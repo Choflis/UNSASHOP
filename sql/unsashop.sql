@@ -85,12 +85,12 @@ CREATE TABLE `usuario` (
   `ID` int(11) NOT NULL,
   `login_usuario` varchar(30) NOT NULL,
   `login_clave` varchar(30) NOT NULL,
-  `nombreC` varchar(30) NOT NULL,
+  `nombreC` varchar(50) NOT NULL,
   `dni` int(8) NOT NULL,
   `celular` int(9) NOT NULL,
   `tipo_usuario` varchar(7) NOT NULL DEFAULT 'Usuario',
   `nombre_usuario` varchar(10) NOT NULL,
-  `correo` varchar(20) NOT NULL,
+  `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -235,7 +235,7 @@ GRANT SELECT, INSERT ON 'unsashop'.* TO 'unsashop'@'%'
 -- Ejemplo de insersión de datos de `tarjeta` y `usuario`
 --
 INSERT INTO tarjeta (id, numero, caducidad, codigo, saldo)
-VALUES (12345678901, '1234-5678-9012-3456', '2024-12-31', 123, 1000);
+VALUES (1, '1234-5678-9012-3456', '2024-12-31', 123, 1000);
 
 INSERT INTO usuario (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id)
-VALUES ('HernanCZ', '123456789', 'Hernan Andy Choquehuanca Zapana', 12345678, 123456789, 'Usuario', 'HernanCZ', 'hchoquehuancaz@unsa.edu.pe', 12345678901);
+VALUES ('HernanCZ', '123456789', 'Hernan Andy Choquehuanca Zapana', 71647797, 987654321, 'Usuario', 'HernanCZ', 'hchoquehuancaz@unsa.edu.pe', 1);
