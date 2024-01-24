@@ -7,7 +7,8 @@ function ajax () {
     if (http.readyState == 4 && xmlhhttpttp.status == 200) {
       document.getElementById("").innerHTML = this.responseText; 
     }
-    http.open("GET", url); // puede ir cgi en url
+    http.open("GET", url); // puede ir cgi en urlgo
+    
     http.send();
   }
 }

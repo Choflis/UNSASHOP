@@ -35,3 +35,5 @@ function redirectToProfile() {
     var userEmail = document.querySelector('#loginForm input[type="text"]').value;
     window.location.href = 'perfil.html?user=' + userEmail;
 }
+
+
