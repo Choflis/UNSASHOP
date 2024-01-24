@@ -26,7 +26,13 @@ hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
 signupLoginLink.forEach(link => {
     link.addEventListener("click", (e) => {
         e.preventDefault();
+        
         formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
+        
+        // Agregar lógica de redirección aquí
+        if (link.id === 'signup-link') {
+            redirectToRegistration(); // Llama a la función de redirección
+        }
     });
 });
 
@@ -34,6 +40,10 @@ function redirectToProfile() {
     //lógica de verificación del usuario y contraseña(aun por completar)
     var userEmail = document.querySelector('#loginForm input[type="text"]').value;
     window.location.href = 'perfil.html?user=' + userEmail;
+}
+function redirectToRegistration() {
+    // Lógica para redirigir a la página de registro
+    window.location.href = 'otroregistro.html';
 }
 
 
