@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear cuenta</title>
+    <meta charset="utf-8">
+    <!-- Juego de caracteres-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Para la adaptacion de pantalla-->
+    <link type="text/css" rel="stylesheet" href="css/login_mejorado.css">
+  </head>
+  <body>
+    <div class="signup">
+      <!-- Falta CGI-->
+      <div class="login-header">
+        <h1>Crear cuenta</h1>
+      </div>
+      <form method="post">
+        <div class = "input-group">
+            <label >usuario</label>
+            <input type="text" name="usuario" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+            <label>clave</label>
+            <input type="text" name="clave" class="input-label" placeholder="">
+        </div>
+
+        <div class="input-group">
+          <label>Nombre completo:</label>
+          <input type="text" name="nombreC" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+          <label>DNI:</label>
+          <input type="text" name="dni" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+            <label>Número celular:</label>
+            <input type="text" name="celular" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+            <label>Tipo de ususario:</label>
+            <input type="text" name="type" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" name="nameUsusario" class="input-label" placeholder="">
+        </div>
+        <form action="">
+            <div class="input-group">
+            <label>Correo electrónico:</label>
+            <input type="text" name="correo" class="input-label" placeholder="">
+            </div>
+            <div class="input-group">
+            <label>Número de tarjeta:</label>
+            <input type="text" name="id_tarjeta" class="input-label" placeholder="">
+            </div>
+            <div class="input-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" class="input-label" >
+            </div>
+            <div class="input-group">
+                <label >
+                    Código
+                </label>
+                <input type="text" name="codigo" class="input-label" placeholder="">
+            </div>
+            <div class="input-group">
+                <label> Saldo</label>
+                <input type="text" name="saldo" class="input-label" placeholder="">
+            </div>
+        </form>
+        <div class="input-group">
+          <label>Contraseña:</label>
+          <input type="password" name="password" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+          <label>Confirmar contraseña:</label>
+          <input type="password" class="input-label" placeholder="">
+        </div>
+        <p>Preguntas de seguridad</p>
+        <div class="input-group">
+          <label>Nombre de mascota:</label>
+          <input type="text" name="pregunta1" class="input-label" placeholder="">
+        </div>
+        <div class="input-group">
+          <label>Nombre de colegio:</label>
+          <input type="text" name="pregunta2" class="input-label" placeholder="">
+        </div>
+        <input type="submit" value="Crear" class="sign_up"/>
+      </form>
+    </div>
+  </body> 
+</html>
