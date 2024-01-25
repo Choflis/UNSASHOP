@@ -94,7 +94,7 @@ if (!$codigo || length($codigo) != 3) {
 register();
 
 sub register {
-    print $cgi->header("text/xml");
+    print $cgi->header("text/html");
 
     if (%errors == 0) {
         my $sth = $dbh->prepare("INSERT INTO tarjeta (`numero`, `caducidad`, `codigo`, `saldo`) VALUES ('$numero_tarjeta', '$fecha_caducidad_Tarjeta', '$codigo', '500')");
@@ -108,8 +108,7 @@ sub register {
         $sth = $dbh->prepare("INSERT INTO $tipoUsuario (`login_usuario`, `login_clave`, `nombreC`,`dni`, `celular`, `tipo_usuario`, `nombre_usuario`, `correo`, `tarjeta_id`, `pregunta1`, `pregunta2`) 
         VALUES ('$nameSesionUsuario', '$password', '$nombreC', '$dni', '$celular', '$tipoUsuario', '$nombreUsuario', '$correo', '$card_id', '$pregunta1', '$pregunta2')");
         $sth->execute;
-        print $cgi->header("text/xml");
-        print $cgi->redirect("index.html");
+        print $cgi->redirect("http://localhost/UNSASHOP/index.html");
         return;
     }
     print_errors();
