@@ -51,7 +51,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Pepsi 500 mL',
-    'http://drive.google.com/uc?export=view&id=1ffibXlCWbl5BkonA-zQNWYoTY2gyhl8u',
+    'https://lh3.googleusercontent.com/pw/ABLVV84w2N78qFS1HIKCS72rOon6a3oGl-m9sYlJPzgAEh612oeXwOlvyaXYVFrBtJAgJEtk-DKNiMLBz2jMcjEA9-29d3ea1I2VcWqOlnPsMm67z7zs3eNg-vOhEMSTQ6JSYuTQ5Y15Subf-GEqm3H539YHQcnAazf3MBD9yE6izg6wRoaq8Pp9vM71HOg404NwTHa9FAmlPP2iOgLxuDS3BWnaCcpqoE2pGvONhqFQ67Z0YVwD_ljv-8pmCG9Frj4uRGBsMRxu7j0CqAYxk0RJ8q1K8GDOAJV_6wLyQIXQthNQiuZ4rj2sRqMF53PUa-2Z34OYI_Iu0E_BDPmHjOko-L0RoR0s3EaruM7T2k6D7EnbmQ46hmd1KUlsA_f6UDo5pZ_qlSubdp3lLUTv3r5JwS4nUS4Xyp6rqE1vX9pkHPPYlikqnoejRgVOAcTR97L3U1c_r5o60Xt1ecMqkTKb04LjMBOTFla7hP79n8OfJ5rorBh_ssK0DnvaJqEz9TX6pHdJFjfiXsHr6yY_BNxKuJldJ_xyE2ogOkYNT1eLzUKGmQUSm3UR0itkk4nHBixwF2qwVQCgA0_bkyI-sVYp4jPp2Ais0tP_xXfzFQuwhxdzwA97PY1EW95sO37Z6j8fHD1vVfZsI7_C9a58wVU4BK0NmzmBtr64j_vtpjZRPbhRjSSrj01mDWpLO1p9ythECao_9CmatcJgOLgAL0l_oDR0RNbHMKbKFe0MTIk9ufrkt-PQOIDEagBf8GYtCbOyiP6FIA-7r-R1QhUg5RFxV7NN7cE9V6WTNCdBDu890Ty_3HS_BI0dPlHqcHvH22dfVyP3vxBn24tOoqQzJBfqlVV_sQB_sFtoRgoqa5fVwnZoZJyQOBqhP0Mu5V5xLI5e2A=w800-h800-s-no-gm?authuser=0',
     2.40
 );
 
@@ -59,7 +59,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Coca Cola 500ml',
-    'https://drive.google.com/file/d/1iGMlJ0pEm1jUKqN1h_d-1VHKWkV1PiN6/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV85yNvTNwYwakU2y4mnB3Ql5iqyk6G2AetYBeREfHkyQi6sSLz_a0uTW6vaucosyuqw1ELZIVHmgrbCJxitl4zsv8gpB8PalXISiRe1T9BcOPLc57Um3Q-mcEoPANZ3zoszDOKbKsJ3d-ifg2OnyeVCqtebov-gT7WlSLgmN4H36MNytX9UaQw52GtsLtIVfMBS3v6ciBAyWjtKPxVuWqU-SF9MYz6OyBZ2BmnpDiscIPb_DD3QCiyn1_WQIrL_lXrHfbrp9IG7q2pH0vv1HKLzRlTn3Zt1DamwzSaRwXPS4CIYF4kFPjXUH9tVH_NTtGVWgtcFge2adGUGW_xcbElfF_LPWawBv1wL_qiS_J9_qPHF1ao4GG0vAPZKZchRLFksL4ktZtEspObVpIhIeduxKaYLrS23xnd7nulG8ADZp6dk2wkoj_UwGCBtyVBP-LnEalnSBJnNbT1yeXpsRejtBNXrlpJRzXITWV3OelAi30k0pz6zepd2mynQqLXL7P4QUVz7XeV6qt7vscPWeYyJ5FU_N_7AZSEziocyR14FBJdIpDzDyAYjyeANScx4xqBl3xuLO43MA8WOemokEFGiQF_h0qKXWkITYOYPUbmQe0DUqEhUleZDJbnL96enfS9CjCHAkDP6pKVJUxdy31W74ZFdpSITEI7kYv91n-DzrxbNpdSQqUy9DRDMIWlskH53qh66kfgjZIlH1Uodq6v8eFG4BZhgnA2-A-66nzV3ILbFOo62NP0hnmxDNMWbNOoJIcgy63peV-xD56kxwuml_VLtlRLumEHuTQxkMJt_bWiTrWhz9TpfTK-N4fTcy0JNHj2ZghRX45qXQ3AIwcGOOqIVXEHVfqXJf1wz8zNfKIeIJK5qN4HtZPtC3457eNDeZ2vRzCWKiODeeVaWI1rc=w800-h800-s-no-gm?authuser=0',
     2.90
 );
 
@@ -67,7 +67,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Sprite 500ml',
-    'https://drive.google.com/file/d/1S9cyU1JZYKhGSXvHT4QGX8EnBRLZhTeK/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV85Hih5y4fVsFK9tIFlXjwgD-7s5USicS-xphdzJEdYtIn9SMHtj5cxuL4wyv6OpWK_P1osmdlVd8aVaO-ZMB7ocivfiCRAqcovyuVWO8GqitimzYrvQEcmRKYHv5NJGH9EfiwWIFRAzXEIRf9zeqQIPvphznqJk8BZeas5p8RE9AaXJidNwkmoFjt4eAw4xck5y3tVll2FXu26Yf4IiMVSoeSlz_UdxAByeNxZR_Zm_qMTvzEt5OkfRfkafD6L_wl0UmsmM4DsGxLrx2NsH6tWYhoFyWx45BZp7gfiii6ZJoM3HgRuZdiGchLmUllwGcVm6z0Ozx-fqJmFrUMbGymaXxnLVSXdtQZS1J1VWw1yH5G_mSVctmi7t9sOibv-w2UWJOXQJpGXc5AM1HjE3vW42BTYf3VcBVgEtvcdqPQx56lq4rItNsWD6bKr5z71H9zzC2xQ8zZ7rfI2MlIh-TOkXjDF-X1NO633oVdHVx9W2gH4NBa1jupY0kGFt-X3kT-uNaeGHty1cQd0C3qzv70ybUCSbub09OkyPgAF5JjKlE7JaccLo-VX2kBXhGEO-_LYz5z1ALVeGqRzpkFYkqhbHYdStspO2My93p3jr0CkfDbm9z-7zJTnZTCN3hitn4hJhgJGrjNvlU6BYMlH0ZV5QXcxC4xNnnq_-BCW7FqL_sGB4CdcuQ6e9oSk646sO2NeAUqurSgUbzFY7OorNRroXzz66OMdIxfQkOTPp8Z2sqisXiPBKuTVg7MLL3XThGI0vN3lM5aYU5ZIaDLpGm96ZOiyqEkRRb5z8SLsu3dtr_FesSvNzH3Fsf53ZSHHWWNGF25Ruz9GOTARnnW19nOWXcr77S-wpSXKBxWlVekZJoX9YOqTS2Cizp_GBYrar3Q=w800-h800-s-no-gm?authuser=0',
     2.50
 );
 
@@ -75,7 +75,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Inca Kola Sin Azucar 500ml',
-    'https://drive.google.com/file/d/1G-k6wdSvDyYfL1foNslnWTeVOWkA1ar2/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV86In9yztltDDFGqIvkGrETtxTF2owFOBrfS_vFBFRBWAjYKXtwSjMngPgGynNuzzm27r3AHe3FDj4BCpyslvyEHF3Ip3KxY69nxD9aPz6oZWNckBc5T5iZBLDns8_xyrKtzThzApxE8coIsl70sXscY-XKdDvAcT1VsrwT-v6vzgvlgaJV47U5kwdMyIMZNzkjIlej_ToKf9DGKvdefGPT5pVwSRxwUxrV7dk6VEGlclapkzNJuk2HPIg2qz7xKR44LVgBQvFPn404AVLcYKDSrF9tEdUq152XOYAin9bpplL4tRIaJxHfGuuv8NvVSrjfm6wAmLTSlzn4hr32lqZkq_qJQuFAF5t69ZXD50axfko8OmQBJVKCUGRGP8Z_XWoB5GYNf6f1cMdVVnqlYEZKgr63YosBW0F8FB0epnuBhDhPNEr5XydqAFnKxaEABalJqQAJnmpSQVIH5Z5csEzLeH2LVSxp9BYVX3_vZSMMeadc6iR8ofv53g0WSvnDo2mTCFXi2J4Njd66bBf6jkoOuEewX37Cu3jbff8wseJTpNe3vnPneDVm10qziwouHx5cpy-5c2YlW9af044071G--9BHIDc7t136l4s7kYaC41Ukv7rhTLwbjtiinRdA0wmeABOhzI9KqpV2ahyjWP6rmnkDMKU8DgpP_Q2Flp2zLWDsFzRFHDZ24JhertbGPrJB_p59k_6ZPN-a3vpmc-szceOX5EEzENcrZYHRm3uJkAza4hXU6Zzu0Epg-gfEkKtSrOwE_2awh6zMMH1GpvvvaD7z8V8Ulwsa5F_X4aTER_ORjdoH-n2PJW-9rvQpcvyHuh3Bmlpt2gy2mvDiziFEKRiEuf_KgB8UAjimD-L7RL1FQMHOSPs1nfQutLD05KdhyiHxsWdzk4MK-ZktJLs8=w800-h800-s-no-gm?authuser=0',
     2.90
 );
 
@@ -83,7 +83,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Oreo Original 108g',
-    'https://drive.google.com/file/d/1kv866UTTYQ0ZvViLCupcZneV6OcTXrhm/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV84QR_Dm-9txdnOkC79ov3wIXBxhJYyrFWmhlvTAvpSoBysoN8QOVE47y0ymfdto8SDkOAw2obYT3WjHA45VEW7kocHUY0U8CK0g89bVyJyt5Vx7KdkJAl-MaHFPQPS0fej7dBG2H4fUCjM7fpPfGGTYXuTTOxjUIdq1HzAE11CsW3JTeFYHuTpY03g8GVGjj6FNYiBuc_bJV2FwR4JduFyyBWyw-MgFTqwus2zXxkG2oAJhmidelOeR2Hhm-TjHBWi_W49MzXRdcYV2jnjVPlFd9ocRfKO2UxnY6S7BFdjsITrl64Ol-sI0MkW9DFmUWdvT_UCpE93b9ewUY3ZvWhGPrJfXbzfkK71G9-8X80E1LcwiH0qT7aAS0rVAfS8HpqMV1OxLNUDA3IyUL2FPbJX9Qhsf2MsFuGccEGremWayalNujC_yBBSMzN4h4o782SEsEUm3fDrG3qqnx5FNDzG7DN_OOKA549FqNiP55OAVPc9e1ZKg2tGRQ5HugKbV12h4w9P29Oglq5SCfgeRTHR_73Mnipgjs47obh8NPmAwSV7ZODQl_4sP_wvTdPTJkCV1QXH24kbmLC7s25l1N73IDWvhatT_DDPZEYRgIAglSjm1pm6Lzv8NdwB8ESWOXFAFmZueWyNFH9JMm7I-D_Ce0BTMaGdxgyhcIt9KJ1V93rJ1mh4O2v7JhXpcUtdpJ8ssKI8EcUjbqLTB51PcS6GO2xKgjsYmMcwEHaEL5oiiJIbME2ZRzsX412Qq1a0Fr6hCNz9T5iv3KgsB4FYZsuOFgf8eKcmeSjL-KrN7X4sB5Dai1Q9Suu3xADwBP33mj8DBYPYM2uzN2dQj6t7mJixqlT2_fq_UIwS1yviS1ubYhciaML4XIQomvrJHXYtIcA=w800-h800-s-no-gm?authuser=0',
     2.60
 );
 
@@ -91,7 +91,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Papas Nativas Inka Chips 135g',
-    'https://drive.google.com/file/d/1fyBqq5xQbQJsXGJDqzs_2Yo13gMI5GZ8/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV87ZIg1YCTHcFuK_ux0Qe-rNZ4KzHMoMci4NEOBzFUoHxWb8u0wtzc2jlImNqFFOha-x0FfW5q6omMGub4Yv79Bv93PhZe9ijIFlrba4G6RovjRBmB4vsIVRlMzIvrR3UT9mFpJ91cYEQjWFgr63_OxWlTT-jD-Ky0lK6Ku85q2J7Os6MJpfMrcy_kLlycAqOLB8dF6oL8N3GDp70N5CoGCSYRBi7MKPFjLCfwp9ITg0PeEwCvEYp8Mbb64saETpo17T4k6D576XU6Y0TLp5X6QL3Y-xHFFMSiv0nXo1GYjuT0oo-e8AjS0OC5via6VZHknf6IQCnDlQhsh21sH-ExbmtgnGyNR45rKZZcyIBt2a-XvBh7KwsyFDgYEKe03Jwwu9Rc4VX5ljl97mdndS-uolR_-wNwtTOltYQg5dj-dssV-U0HAERIJD-TKkqDGNTswVhwMYb3Ctv79-kMRv7JOCSNTWp0r1A-iEMaEgTITxi_Gs26cXglEQ9EO2QrFULKH9b1uie4fbXQOH7xNbW-Exs9Kde0Hn5_XWDORdyhn95JpEOkL0DP2JWEQbu08Q-4bmKzTN-a8fM1DNf0GwbpauJYLDrSoXqpsE_oYAYwvDu9xVcKJkw7smudkMfn23dGF7inzuJ8oOfwVBlxhsRdOMuwK4Ujf6glEhuLp_phGMrzVYNb35xkTFMZ3EPGyAL6ZMBd9MB26NAnCuBIHM9n_Rk0IHYGzQSqIreAouYSW-2B7fEu2Sm0txjtEfUjkLXvU6iZCkSUbTjcMOsfUcciMZ4sLgDnQWCpIPOT28YJjNtB9iWZecIJZ2xBZaFPoOiZAWjmGfM5ASUknW36QYnB8YeLe2CVsoTeQC3yv0O-7Rnt4RrOIqpA_s_xaGRBlia0h8nV2XklKBMzZTHqNDdHI=w800-h800-s-no-gm?authuser=0',
     8.00
 );
 
@@ -99,7 +99,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Chizitos Sabor Queso 190g',
-    'https://drive.google.com/file/d/1QglExijLtYIvJA_UP4Hk1x29BjuBjD4J/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV87N2sbcK757OmHF1yzV8OMkQ8ibiHYbQMslAouUxcW7aeVun39QiGuySWH_esu5vBshvfYUfNINadKcoLCIVgKc4moQfILD9gtmn9H4CpjF-UhGiLtqx1_jRrLgUQWPFgx9BjsErCS46eStxEr7Mc8Z-b3SbCmCcx4uv17NIVuAPXYMStFpbDWCq0digvEXyQ0k2g8YIjSH_oTHzjagzmsyuXdpn4MfUVllWwHs03-Dn1gT7CW0C4uSdmMXHQNJl6GE9qSthmOVt06UmTzb6itLQdUH6LATR29cY1nVM2a8GyNJY3W928fNKhp46xXjb1o_KYl3kXsksA24nhxftkJeEShvk_b-cSg_BxcaUQnPp5jkot5516IyUbq6bA5LDxJBCEFaFE05Tcdn5yVot8a78OTebWW_5rVXZbyKSClpbJm9S0B6XNcBk6IdA05TFqRMLr8AwPd9VeacutxA02YO9acRZ1OlfG2_vXsCWBdaMqLQOFjXcmYtPYqRql92yA6b4gJAF3IkDsx3SdxuKTHAxAL52npd9SbV5WkR-KzcDMR275NEpzU9GkmfSozIfSg424JnuA9JvUvG_ExM5xc6DecpYVnMr6QDs_QlaVBGthX2bcQqhVh8JQzezY4kwFhOLdfyBtiLu2IeXxXXlr_0iJxEB_FFhkKAPRqlS8cebheWP6c2BtUREqiBna1TEa3Hbnb3AvdRolYuM3pDWYZKJRzdrb1CKZfJmUFIdoqnEW92aSnAeOetbxNHLTrpf3IwZpgKX_YQlGsmD9PWlqKvqJnwQ3ynJNjNJSLGj9bVezDgSeD1Qf7nRxHS8qIJJkH1Q3cWZjRl4HgtXmsIPUlqz4OCpsXH8sRsmOOlDg-X8lrqhpSJrhjll-1vlUdrt8KZnjTjltqvK9oN7wuy1Sg=w800-h800-s-no-gm?authuser=0',
     6.90
 );
 
@@ -107,7 +107,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Battimix Vainilla 146g',
-    'https://drive.google.com/file/d/1d1ZTrsfTmZrmNmkLHWujpQyrx2_mu3zG/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV85qDTj5sdBI9ZL3aXm2RUn_5UW1pLM2tk7eYs0xLMZtpPlTje7nOLT3KI_VW7Tki_W6oRZ4--IalRadfg1MhPxnJEL3Bxo1F3hPPXjbrZ9e0K3UiYJ5OScv9ZvK5AVfAuufTl1naIaGaqbHiVaXWPVEJ85Ut17Sc2pDdvCbU-0qF0GJzWWKLhgzHYdTEAAzD7lfnsHPP2y60edg1KjztKJjCOzOMaH4GfufuLakUdEKIGhWYQIlHegXLvxB0WBp3gfQ_6A-JatHZiyutx0iINp1_W7-Ap85e_gvHy45pnJERWSbAdDqu6mFC8f9AUr97QJY5DRo1ErECVyqQLfdLNB716GCZGSK5v1ILCqHKb-TWhSGGWhjJX_eYWShWUQGmsxq-xFxfbQ01YpkI-hgK5inVi8yX2GlhfLr2HSI1ESGoZMOqFNigpmMTj2BkQUFsN4u7Oy5Akkk15BL4JrsZ409F95ibyBHzCIB3H130PqM-s3JN-Z8SDcNmIQMX_r5QztLiz-jcW51mv98wDA6ERRrusvCxL0RQ9n-iwrvbf4awFx2LmPcGXYZfgMc5qwWiV44qSAbrN4gCAOuaQ78ZHw0fB_L4qFoCM4p2aIISN_I6wMvORtBaZQ2VyGrNFntSBSj1apB4QTxMoDgPfsCr2MFLTZs6yoO32u5UQ8NLKcnf1s2IqsRgTFN05Zz4aBbEwjFel28fACAY_e08R8TPFhKrkduo7ruZm6izI0ZO-FgN_b125Q231LVjm5amyNQ8AYy1dqFKiuY07ZAHjNtP2FVF6orbOKcN6vxTIAeRWrftP-WhfBzMjpd5Kt5lkiZ0pAw2Sl3DRhmWjk6IHnnU0zHy1OH7rk0V8fBpfVd-v9aRG5fW5CG7dfPtcc9i-FK8g=w800-h800-s-no-gm?authuser=0',
     4.60
 );
 
@@ -115,6 +115,6 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Cono Frio Rico Choco Chips 130ml',
-    'https://drive.google.com/file/d/1OEltQ68ROwpZD-9Lu6Jnd9OVwf6C4Reo/view?usp=drive_link',
+    'https://lh3.googleusercontent.com/pw/ABLVV845Yu6yLG88uns5INh8r7eTpzxW-RhoVA-dQ5_bjWQIIG-qEryJ97D4-r1MaHHuHcD596uzLKZnCua2joW_7F28-sYZeI-t0dT06SMIajfJVyepSKwK7GAmBvmGQYU4GQbereiXHxv9LyqVvH--TZgQPT-eJNw_U1ZPQAlVvL7TBE746RtEHIyWK-ESSB3Ap6NLJ_3SY5cjf7RChGpmLHu4uJ-pyCKYaJZMEfkn_FhsMHgDqX5AI4dAUBrqcQlb0rTxG9Z55fVpJF3zALblCLV5gmq4GUkk7BaV0pS10J3TwQOvN-z6HEyn6cZz0mKmxrmzRTZUnCMf9CEzEpK5PO-9ps08amquziMw6xGehiTJ-IjWC8qTooEYVbStDtY8YIXX6HvfTYHjkpLRjAqCmsTUviaazsytsxC0iU-FY6Q-gDhHFiudOFKxBcU6Aj5BA7h5KzvMhaQ5VxOAzE1phVsg1cyeFVZIpWKb6VppCs4Of0hJIyi_WHjzfrQ9M_ySuuB2TDL0UDgFyKmL4xQoLINiHy-xEMjlPInNQwpuGYsfcdKl7Ohn7DhdtDdamwMD4F2cLKvOjvkx3905Xm-HeNi1U1FqObfyw9Wh9MCZwGbLeLnkrBu4GHiNWu0mQ7-u1ur6O7rDeIZNMct3e3l5R1TB9sPFd01XvOFQJ4-M6_W1Af8QiySdM6brl45Lc6RtIpXPDhVTLJxQQ2lRui7a_uvAZ_WivUuIS880IPNjEAMt2AaCX-u8C74gMXUO9pqabWVwkToZ03PARXOqmFHiiJtGzk9SdkD316JVNlHLCXAsSGYhEjPy92muyu6OayfZUartFKl2A9sJqmPNynitJ0tS3UvtzMM7wMBxGrY816LV7IdHgozhMKpMEe7nnoXa6g=w800-h800-s-no-gm?authuser=0',
     4.90
 );

@@ -31,7 +31,7 @@ CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `vendedor_id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `imagen` varchar(150) NOT NULL,
+  `imagen` varchar(1000) NOT NULL,
   `precio` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
