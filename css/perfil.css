@@ -68,3 +68,27 @@ body {
 .inicio:hover {
   background-color: #e08a10;
 }
+.radio {
+  padding: 15px;
+  display: flex;
+}
+.owner, .user {
+  margin-right: 20px;
+}
+
+.owner input, .user input {
+  display: none;
+}
+
+.owner label, .user label {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #f39a1f; 
+  color: #f39a1f; 
+  border-radius: 5px;
+}
+
+.owner input:checked + label, .user input:checked + label {
+  background-color: #f39a1f;
+  color: #fff;
+}
