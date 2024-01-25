@@ -3,12 +3,15 @@ use strict;
 use warnings;
 use CGI;
 use CGI::Session;
-use CGI::Session;
 use DBI;
 use JSON;
 
 my $cgi = CGI->new;
 $cgi->charset("UTF-8");
+
+if (my $cookie = $cgi->cookie("id_session_usuario")) {
+    
+}
 
 my $session_cookie = $cgi->cookie("id_session_usuario") || '';
 my $session = CGI::Session->new(undef, $session_cookie, {Directory => '/tmp'});
