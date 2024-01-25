@@ -24,27 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carrito`
---
-
-CREATE TABLE `carrito` (
-  `usuario_id` int(11) NOT NULL,
-  `producto_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
-  `tienda_id` int(11) NOT NULL,
+  `vendedor_id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `descripcion` varchar(60) NOT NULL,
-  `imagen` varchar(30) NOT NULL,
-  `precio` int(11) NOT NULL
+  `imagen` varchar(150) NOT NULL,
+  `precio` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -59,20 +47,6 @@ CREATE TABLE `tarjeta` (
   `caducidad` date NOT NULL,
   `codigo` int(3) NOT NULL,
   `saldo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tienda`
---
-
-CREATE TABLE `tienda` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `descripcion` varchar(60) NOT NULL,
-  `vendedor_id` int(11) NOT NULL,
-  `abierto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,31 +96,17 @@ CREATE TABLE `vendedor` (
 --
 
 --
--- Indices de la tabla `carrito`
---
-ALTER TABLE `carrito`
-  ADD KEY `usuario_id` (`usuario_id`,`producto_id`),
-  ADD KEY `producto_id` (`producto_id`);
-
---
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tienda_id` (`tienda_id`);
+  ADD KEY `vendedor_id` (`vendedor_id`);
 
 --
 -- Indices de la tabla `tarjeta`
 --
 ALTER TABLE `tarjeta`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tienda`
---
-ALTER TABLE `tienda`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `dueño_id` (`vendedor_id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -179,12 +139,6 @@ ALTER TABLE `tarjeta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tienda`
---
-ALTER TABLE `tienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -201,23 +155,8 @@ ALTER TABLE `vendedor`
 --
 
 --
--- Filtros para la tabla `carrito`
---
-ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `producto`
 --
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tienda` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tienda`
---
-ALTER TABLE `tienda`
-  ADD CONSTRAINT `tienda_ibfk_1` FOREIGN KEY (`vendedor_id`) REFERENCES `vendedor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
