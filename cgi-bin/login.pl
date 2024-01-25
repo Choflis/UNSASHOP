@@ -11,7 +11,7 @@ my $cgi = CGI->new;
 $cgi->charset("UTF-8");
 my $user = $cgi->param("login_usuario");
 my $password = $cgi->param("password");
-my $type = "vendedor"; #$cgi->param("tipo_usuario_login");
+my $type = $cgi->param("tipo_usuario_login");
 my $session_time = 86400;
 
 my $db_user = "unsashop";
@@ -65,7 +65,7 @@ sub login {
             -httponly => 1,
         );
 
-        print $cgi->header(-cookie => $cookie, -location => '../index.html');
+        print $cgi->header(-cookie => $cookie, -location => '../');
         exit;
     } else {
         $errors{login} = "El usuario y la clave no coinciden.";

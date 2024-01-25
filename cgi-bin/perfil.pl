@@ -23,12 +23,8 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password, {RaiseError => 1, PrintErro
   or die "Error de conexión: $DBI::errstr";
 
 my $query;
-if ($user_type eq 'usuario') {
-    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM usuario  JOIN tarjeta ON usuario.tarjeta_id = tarjeta.id WHERE usuario.ID = ?";
-}
-if ($user_type eq 'vendedor') {
-    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM vendedor JOIN tarjeta ON vendedor.tarjeta_id = tarjeta.id WHERE vendedor.ID = ?";
-}
+$query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM $user_type  JOIN tarjeta ON $user_type.tarjeta_id = tarjeta.id WHERE $user_type.ID = ?";
+
 
 my $sth = $dbh->prepare($query);
 $sth->execute($user_id);
