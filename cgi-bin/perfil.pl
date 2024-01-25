@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use CGI;
 use CGI::Session;
+use CGI::Session;
 use DBI;
 use JSON;
 
@@ -23,11 +24,10 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password, {RaiseError => 1, PrintErro
 
 my $query;
 if ($user_type eq 'usuario') {
-    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM usuario JOIN tarjeta ON usuario.tarjeta_id = tarjeta.id WHERE usuario.ID = ?";
-} elsif ($user_type eq 'vendedor') {
+    $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM usuario  JOIN tarjeta ON usuario.tarjeta_id = tarjeta.id WHERE usuario.ID = ?";
+}
+if ($user_type eq 'vendedor') {
     $query = "SELECT nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta.numero FROM vendedor JOIN tarjeta ON vendedor.tarjeta_id = tarjeta.id WHERE vendedor.ID = ?";
-} else {
-    die "Tipo de cuenta no reconocido: $user_type";
 }
 
 my $sth = $dbh->prepare($query);

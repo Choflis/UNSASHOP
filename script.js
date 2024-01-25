@@ -47,3 +47,24 @@ function redirectToRegistration() {
 }
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  var sessionUsername = sessionStorage.getItem("session_username");
+
+  if (sessionUsername) {
+      var perfilLink = document.querySelector("nav .links li a[href='perfil.html']");
+      if (perfilLink) {
+          perfilLink.innerText = "Perfil de " + sessionUsername;
+      }
+  }
+
+  var logoutLink = document.getElementById("logout-link");
+
+  if (logoutLink) {
+      logoutLink.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          sessionStorage.removeItem("session_username");
+          window.location.href = "index.html";
+      });
+  }
+});

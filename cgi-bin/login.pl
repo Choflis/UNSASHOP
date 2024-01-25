@@ -11,7 +11,7 @@ my $cgi = CGI->new;
 $cgi->charset("UTF-8");
 my $user = $cgi->param("login_usuario");
 my $password = $cgi->param("password");
-my $type = "vendedor";#$cgi->param("tipo_usuario_login");
+my $type = "vendedor"; #$cgi->param("tipo_usuario_login");
 my $session_time = 86400;
 
 my $db_user = "unsashop";
@@ -33,10 +33,6 @@ sub validate_user_input {
 
     if (!$password || length($password) == 0 || length($password) > 30) {
         $errors{password} = "Clave inválida.";
-    }
-
-    if (!$type || ($type ne "usuario" && $type ne "vendedor")) {
-        $errors{type} = "Tipo inválido.";
     }
 }
 
@@ -69,7 +65,7 @@ sub login {
             -httponly => 1,
         );
 
-        print $cgi->header(-cookie => $cookie, -location => '../');
+        print $cgi->header(-cookie => $cookie, -location => '../index.html');
         exit;
     } else {
         $errors{login} = "El usuario y la clave no coinciden.";

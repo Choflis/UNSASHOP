@@ -108,7 +108,7 @@ sub register {
         $sth = $dbh->prepare("INSERT INTO $tipoUsuario (`login_usuario`, `login_clave`, `nombreC`,`dni`, `celular`, `tipo_usuario`, `nombre_usuario`, `correo`, `tarjeta_id`, `pregunta1`, `pregunta2`) 
         VALUES ('$nameSesionUsuario', '$password', '$nombreC', '$dni', '$celular', '$tipoUsuario', '$nombreUsuario', '$correo', '$card_id', '$pregunta1', '$pregunta2')");
         $sth->execute;
-        print $cgi->redirect("http://localhost/UNSASHOP/index.html");
+        #print $cgi->redirect("http://localhost/UNSASHOP/index.html");
         return;
     }
     print_errors();
