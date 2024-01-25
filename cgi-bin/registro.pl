@@ -17,7 +17,7 @@ my $nameSesionUsuario = $cgi->param("nameSesionUsuario");
 my $password = $cgi->param("password");
 my $password2 = $cgi->param("password2");
 my $tipoUsuario = $cgi->param("tipoUsuario");
-my $nombreUsuario = $cgi->param("nombreUsuario");
+my $nombreUsuario = $cgi->param("usuario");
 my $correo = $cgi->param("correo");
 my $numero_tarjeta = $cgi->param("numero_tarjeta");
 my $fecha_caducidad_Tarjeta = $cgi->param("fecha_caducidad_Tarjeta");
@@ -36,16 +36,16 @@ if (!$nombreC || length($nombreC) == 0 || length($nombreC) > 30) {
     $errors{nombreC} = "NombreC invalido.";
 }
 
-if (!$dni || length($dni) == 0 || length($dni) > 8) {
+if (!$dni || length($dni) == 0 || length($dni) != 8) {
     $errors{dni} = "DNI invalido.";
 }
 
-if (!$celular || length($celular) == 0 || length($celular) > 9) {
+if (!$celular || length($celular) == 0 || length($celular) != 9) {
     $errors{celular} = "Número de celular invalido.";
 }
 
 if (!$nameSesionUsuario || length($nameSesionUsuario) == 0 || length($nameSesionUsuario) > 30) {
-    $errors{nameSesionUsuario} = "Nombre de usuario  de inicio de sesión invalido.";
+    $errors{nameSesionUsuario} = "Nombre de usuario de inicio de sesión invalido.";
 }
 
 if (!$password || length($password) == 0 || length($password) > 30) {
@@ -68,7 +68,7 @@ if (!$correo || length($correo) == 0 || length($correo) > 50 || $correo !~ /\S+@
     $errors{correo} = "Correo invalido.";
 }
 
-if (!$numero_tarjeta || length($numero_tarjeta) == 0 || length($numero_tarjeta) > 16) {
+if (!$numero_tarjeta || length($numero_tarjeta) == 0 || length($numero_tarjeta) > 19) {
     $errors{numero_tarjeta} = "Número de tarjeta invalido.";
 }
 if (!$pregunta1 || length($pregunta1) == 0 || length($pregunta1) > 15) {
@@ -78,10 +78,10 @@ if (!$pregunta2 || length($pregunta2) == 0 || length($pregunta2) > 15) {
     $errors{pregunta2} = "Respuesta 2 invalida.";
 }
 
-#my $card_expire_time;
-#if ($fecha_caducidad_Tarjeta && $fecha_caducidad_Tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})/) {
-#    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
-#}
+my $card_expire_time;
+if ($fecha_caducidad_Tarjeta && $fecha_caducidad_Tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})$/) {
+    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
+}
 
 #if (!$card_expire_time || DateTime->now > $card_expire_time) {
 #    $errors{fecha_caducidad_Tarjeta} = "Fecha de expiración de tarjeta invalida.";
@@ -106,8 +106,10 @@ sub register {
         my $card_id = $card_row[0];
 
         $sth = $dbh->prepare("INSERT INTO $tipoUsuario (`login_usuario`, `login_clave`, `nombreC`,`dni`, `celular`, `tipo_usuario`, `nombre_usuario`, `correo`, `tarjeta_id`, `pregunta1`, `pregunta2`) 
-        VALUES ('$nameSesionUsuario', '$password', '$nombreC', '$dni', '$celular', '$tipo_usuario', '$nombreUsuario', '$correo', '$card_id', '$pregunta1', '$pregunta2')");
+        VALUES ('$nameSesionUsuario', '$password', '$nombreC', '$dni', '$celular', '$tipoUsuario', '$nombreUsuario', '$correo', '$card_id', '$pregunta1', '$pregunta2')");
         $sth->execute;
+        print $cgi->header("text/xml");
+        print $cgi->redirect("index.html");
         return;
     }
     print_errors();
