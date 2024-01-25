@@ -13,7 +13,7 @@ if (my $cookie = $cgi->cookie("id_session_usuario")) {
     
 }
 
-my $session_cookie = $cgi->cookie("id_session_usuario") || '';
+my $session_cookie = $cgi->cookie("id_session") || '';
 my $session = CGI::Session->new(undef, $session_cookie, {Directory => '/tmp'});
 
 my $user_id = $session->param("session_id");

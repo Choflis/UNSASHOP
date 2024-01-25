@@ -15,7 +15,18 @@ function enviarFormularioRegistro() {
         },
         body: JSON.stringify({
             nombreC: nombreC,
+            dni: dni,
+            celular: celular,
+            nameSesionUsuario: nameSesionUsuario,
             password: password,
+            tipoUsusario: tipoUsusario,
+            usuario: usuario,
+            correo: correo,
+            numero_tarjeta: numero_tarjeta,
+            fecha_caducidad_tarjeta: fecha_caducidad_tarjeta,
+            codigo: codigo,
+            pregunta1: pregunta1,
+            pregunta2: pregunta2,
             
         }),
     })
