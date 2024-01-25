@@ -43,7 +43,7 @@ function redirectToProfile() {
 }
 function redirectToRegistration() {
     // Lógica para redirigir a la página de registro
-    window.location.href = 'otroregistro.html';
+    window.location.href = 'registro.html';
 }
 
 
