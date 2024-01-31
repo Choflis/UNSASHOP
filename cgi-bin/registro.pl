@@ -20,7 +20,7 @@ my $tipoUsuario = $cgi->param("tipoUsuario");
 my $nombreUsuario = $cgi->param("usuario");
 my $correo = $cgi->param("correo");
 my $numero_tarjeta = $cgi->param("numero_tarjeta");
-my $fecha_caducidad_Tarjeta = $cgi->param("fecha_caducidad_Tarjeta");
+my $fecha_caducidad_tarjeta = $cgi->param("fecha_caducidad_tarjeta");
 my $codigo = $cgi->param("codigo");
 my $pregunta1 = $cgi->param("pregunta1");
 my $pregunta2 = $cgi->param("pregunta2");
@@ -79,12 +79,12 @@ if (!$pregunta2 || length($pregunta2) == 0 || length($pregunta2) > 15) {
 }
 
 my $card_expire_time;
-if ($fecha_caducidad_Tarjeta && $fecha_caducidad_Tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})$/) {
+if ($fecha_caducidad_tarjeta && $fecha_caducidad_tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})$/) {
     $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
 }
 
 #if (!$card_expire_time || DateTime->now > $card_expire_time) {
-#    $errors{fecha_caducidad_Tarjeta} = "Fecha de expiración de tarjeta invalida.";
+#    $errors{fecha_caducidad_tarjeta} = "Fecha de expiración de tarjeta invalida.";
 #}
 
 if (!$codigo || length($codigo) != 3) {
@@ -96,7 +96,8 @@ register();
 sub register {
 
     if (%errors == 0) {
-        my $sth = $dbh->prepare("INSERT INTO tarjeta (`numero`, `caducidad`, `codigo`, `saldo`) VALUES ('$numero_tarjeta', '$fecha_caducidad_Tarjeta', '$codigo', '500')");
+        
+        my $sth = $dbh->prepare("INSERT INTO tarjeta (`numero`, `caducidad`, `codigo`, `saldo`) VALUES ('$numero_tarjeta', '$fecha_caducidad_tarjeta', '$codigo', '500')");
         $sth->execute;
 
         $sth = $dbh->prepare("SELECT LAST_INSERT_ID()");

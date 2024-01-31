@@ -4,16 +4,15 @@ body {
   font-family: 'Ubuntu', sans-serif;
 	background-size: 100% 110%;
 }
-
-
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6{
   margin:0; padding:0;
+  font-size: 60px;
 }
 .login {
   margin:0 auto;
   max-width:500px;
 }
-.signup{
+form{
   margin:0 auto;
   max-width:700px;
 }
@@ -23,36 +22,41 @@ h1, h2, h3, h4, h5, h6, a {
   font-size:300%;
 }
 /* .login-header h1 {
-   text-shadow: 0px 5px 15px #000; */
-
-.login-form {
+   text-shadow: 0px 5px 15px #000; 
+*/
+form{
   border:.5px solid #fff;
   background:#4facff;
   border-radius:10px;
   box-shadow:0px 0px 10px #000;
 }
-label{
+label, p{
   text-align:left;
   font-family: 'Ubuntu', sans-serif;
   color:#fff;
   line-height:3em;
   font-weight: bold;
 }
+p{
+  text-align:center;
+  font-size: 20px;
+}
 .login-form h3 {
   text-align:left;
   margin-left:40px;
   color:#fff;
 }
-.login-form {
+form{
   box-sizing:border-box;
   padding-top:15px;
 	padding-bottom:10%;
   margin:5% auto;
   text-align:center;
 }
-.login-form input[type="text"],
+form input[type="text"],
+form input[type="password"],
 .login input[type="text"],
-.login input[type="password"] {
+.login input[type="password"]{
   max-width:400px;
 	width: 80%;
   line-height:3em;
@@ -63,12 +67,13 @@ label{
   outline:none;
   padding-left:10px;
 }
-.input-label[type="text"]{
-  max-width:100px;
+.input-label[type="text"],
+.input-label[type="password"]{
+  max-width:300px;
   max-height: 20px;
 }
-a,
-.login-form input[type="button"] {
+.index,
+form input[type="button"] {
   height:30px;
   width:110px;
   background:#fff;
@@ -79,6 +84,27 @@ a,
   cursor:pointer;
   margin: 25px;
   text-decoration: none;
+}
+.owner, .user {
+  margin-right: 20px;
+}
+
+.owner input, .user input {
+  display: none;
+}
+.radio {
+  display: flex;
+}
+.owner label, .user label {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #f39a1f; 
+  color: #f39a1f; 
+  border-radius: 5px;
+}
+.owner input:checked + label, .user input:checked + label {
+  background-color: #f39a1f;
+  color: #fff;
 }
 
 .no-access {
@@ -92,7 +118,6 @@ a,
   text-decoration:underline;
   cursor:pointer;
 }
-
 /*Media Querie*/
 @media only screen and (min-width : 150px) and (max-width : 530px){
   .login-form h3 {

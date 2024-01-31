@@ -52,6 +52,7 @@ VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Pepsi 500 mL',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/pepsi.jpg?raw=true',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/pepsi.jpg?raw=true',
     2.40
 );
 
@@ -59,6 +60,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Coca Cola 500ml',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/cocacola.jpg?raw=true',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/cocacola.jpg?raw=true',
     2.90
 );
@@ -68,6 +70,7 @@ VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Sprite 500ml',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/sprite.jpg?raw=true',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/sprite.jpg?raw=true',
     2.50
 );
 
@@ -75,6 +78,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Inca Kola Sin Azucar 500ml',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/inkacola.jpg?raw=true',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/inkacola.jpg?raw=true',
     2.90
 );
@@ -84,6 +88,7 @@ VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Oreo Original 108g',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/oreo.jpg?raw=true',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/oreo.jpg?raw=true',
     2.60
 );
 
@@ -91,6 +96,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Papas Nativas Inka Chips 135g',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/inka.jpg?raw=true',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/inka.jpg?raw=true',
     8.00
 );
@@ -100,6 +106,7 @@ VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Chizitos Sabor Queso 190g',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/chizito.jpg?raw=true',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/chizito.jpg?raw=true',
     6.90
 );
 
@@ -107,6 +114,7 @@ INSERT INTO producto (vendedor_id, nombre, imagen, precio)
 VALUES (
     (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
     'Battimix Vainilla 146g',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/batimix.jpg?raw=true',
     'https://github.com/Choflis/UNSASHOP/blob/main/img/batimix.jpg?raw=true',
     4.60
 );

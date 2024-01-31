@@ -1,5 +1,10 @@
 Cambios por realizar:
 
+<<<<<<< HEAD
+=======
+agregar las imagenes de los productos a la carpeta img
+
+>>>>>>> 9aa14c2265c16d53c9587f046fa280931edefb83
 HTML:
 
     -opciones para el vendedor: agregar, modificar y eliminar producto.
@@ -24,8 +29,10 @@ PERL:
     
     -comprobar que ya existan usuarios registrados con ciertos datos.
     -mejorar las expresionres regulares y el muestreo de erores con js.
-    -crear pl para la compra, descuento de saldo, verificacion de saldo.etc (mostrar).
-
+    -crear pl para la compra, descuento de saldo, verificacion de saldo.etc (funcionalidad de compra).
+    -crear pl para el aumento de credito en la tarjeta del vendedor(funcionalidad de venta).
+    -
+    
 JAVASCRIPT:
     
     -crear ajax para mostrar el saldo que el cliente tenga en la base de datos.
