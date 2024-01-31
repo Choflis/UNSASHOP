@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             const creditoA = document.getElementById("credito-nav");
-            creditoA.textContent = "s/." + data.creditoF;
+            creditoA.textContent = "s/." + data.saldoF;
             console.log("costoFinal:", totalFinal);
-            console.log("credito actualizado a:", data.creditoF);
+            console.log("credito actualizado a:", data.saldoF);
             //totalFinal = 0;
         })
         .catch(error => {

@@ -64,9 +64,14 @@ sub login {
             -secure  => 1,
             -httponly => 1,
         );
-
-        print $cgi->header(-cookie => $cookie, -location => '../');
+        if ($type eq "usuario"){
+        print $cgi->header(-cookie => $cookie, -location => '../indexU.html');
         exit;
+        } 
+        if ($type eq "vendedor") {
+        print $cgi->header(-cookie => $cookie, -location => '../indexV.html');
+        exit;
+        }
     } else {
         $errors{login} = "El usuario y la clave no coinciden.";
         print $cgi->header("text/xml");

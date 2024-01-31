@@ -45,6 +45,7 @@ if (!$celular || length($celular) == 0 || length($celular) != 9) {
 }
 
 if (!$nameSesionUsuario || length($nameSesionUsuario) == 0 || length($nameSesionUsuario) > 30) {
+
     $errors{nameSesionUsuario} = "Nombre de usuario de inicio de sesión invalido.";
 }
 
@@ -68,6 +69,7 @@ if (!$correo || length($correo) == 0 || length($correo) > 50 || $correo !~ /\S+@
     $errors{correo} = "Correo invalido.";
 }
 
+    #consulta que seleccione un elemento de la tabla $tipo_usuario 
 if (!$numero_tarjeta || length($numero_tarjeta) == 0 || length($numero_tarjeta) > 19) {
     $errors{numero_tarjeta} = "Número de tarjeta invalido.";
 }

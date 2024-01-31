@@ -46,7 +46,7 @@ CREATE TABLE `tarjeta` (
   `numero` varchar(19) NOT NULL,
   `caducidad` date NOT NULL,
   `codigo` int(3) NOT NULL,
-  `saldo` int(11) NOT NULL
+  `saldo` decimal(10,2) NOT NULL DEFAULT '500.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,13 +62,12 @@ CREATE TABLE `usuario` (
   `nombreC` varchar(50) NOT NULL,
   `dni` int(8) NOT NULL,
   `celular` int(9) NOT NULL,
-  `tipo_usuario` varchar(7) NOT NULL DEFAULT 'Usuario',
+  `tipo_usuario` varchar(7) NOT NULL DEFAULT 'usuario',
   `nombre_usuario` varchar(10) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL,
   `pregunta1` varchar(15) NOT NULL,
-  `pregunta2` varchar(15) NOT NULL,
-  `credito` decimal(10,2) NOT NULL DEFAULT '500.00'
+  `pregunta2` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -84,13 +83,12 @@ CREATE TABLE `vendedor` (
   `nombreC` varchar(50) NOT NULL,
   `dni` int(8) NOT NULL,
   `celular` int(9) NOT NULL,
-  `tipo_usuario` varchar(8) NOT NULL DEFAULT 'Vendedor',
+  `tipo_usuario` varchar(8) NOT NULL DEFAULT 'vendedor',
   `nombre_usuario` varchar(10) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL,
   `pregunta1` varchar(15) NOT NULL,
-  `pregunta2` varchar(15) NOT NULL,
-  `credito` decimal(10,2) NOT NULL DEFAULT '500.00'
+  `pregunta2` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

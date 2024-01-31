@@ -8,8 +8,7 @@ INSERT INTO tarjeta (numero, caducidad, codigo, saldo)
 VALUES ('1234-5678-9012-3456', '2024-12-31', 123, 1000);
 
 INSERT INTO tarjeta (numero, caducidad, codigo, saldo)
-VALUES ('9876-5432-1098-7654', '2024-12-30', 321, 10000);
-
+VALUES ('9876-5432-1098-7654', '2024-12-30', 321, 1000);
 
 
 -- USUARIOS:
@@ -28,6 +27,20 @@ VALUES (
   'sol'
 );
 
+INSERT INTO usuario (login_usuario, login_clave, nombreC, dni, celular, nombre_usuario, correo, tarjeta_id, pregunta1, pregunta2)
+VALUES (
+  'BryanLRU',
+  '12345',
+  'Bryan Fernando Larico Rodriguez',
+  87654321,
+  912345678,
+  'BryanLR',
+  'blaricor@unsa.edu.pe',
+  (SELECT id FROM tarjeta WHERE numero = '9876-5432-1098-7654'),
+  'dog',
+  'sch'
+);
+
 -- VENDEDORES:
 
 INSERT INTO vendedor (login_usuario, login_clave, nombreC, dni, celular, tipo_usuario, nombre_usuario, correo, tarjeta_id, pregunta1, pregunta2)
@@ -43,6 +56,19 @@ VALUES (
   (SELECT id FROM tarjeta WHERE numero = '9876-5432-1098-7654'),
   'lia',
   'sol'
+);
+INSERT INTO vendedor (login_usuario, login_clave, nombreC, dni, celular, nombre_usuario, correo, tarjeta_id, pregunta1, pregunta2)
+VALUES (
+  'BryanLRV',
+  '12345',
+  'Bryan Fernando Larico Rodriguez',
+  87654321,
+  912345678,
+  'BryanLR',
+  'blaricor@unsa.edu.pe',
+  (SELECT id FROM tarjeta WHERE numero = '9876-5432-1098-7654'),
+  'dog',
+  'sch'
 );
 
 -- PRODUCTO:

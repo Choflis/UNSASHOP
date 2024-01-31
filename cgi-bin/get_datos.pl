@@ -22,16 +22,21 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password, { RaiseError => 1, PrintErr
     or die "Error de conexión: $DBI::errstr";
 
 my $query;
-$query = "SELECT credito, login_usuario FROM $user_type WHERE id = ?"; 
+my $query = "
+    SELECT u.login_usuario, t.saldo
+    FROM usuario u
+    LEFT JOIN tarjeta t ON u.tarjeta_id = t.id
+    WHERE u.ID = ?;
+";
  
 my $sth = $dbh->prepare($query);
 $sth->execute($user_id);
 
 my @datos = $sth->fetchrow_array;
 
-my $credito_s = $datos[0] // '';
+my $credito_s = $datos[1] // '';
 $credito_s = "$credito_s";
-my $perfil_s = $datos[1] // '';
+my $perfil_s = $datos[0] // '';
 $perfil_s = "$perfil_s";
 
 print $cgi->header("application/json");

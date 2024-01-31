@@ -32,22 +32,28 @@ my $dsn = "dbi:mysql:database=unsashop;host=127.0.0.1";
 my $dbh = DBI->connect($dsn, $db_user, $db_password, {RaiseError => 1, PrintError => 1})
   or die "Error de conexión: $DBI::errstr";
 
-my $query_credito = "SELECT credito FROM usuario WHERE id = ?";
-my $sth_credito = $dbh->prepare($query_credito);
-$sth_credito->execute($user_id);
+my $query_tarjeta_id = "SELECT tarjeta_id FROM usuario WHERE ID = ?";
+my $sth_tarjeta_id = $dbh->prepare($query_tarjeta_id);
+$sth_tarjeta_id->execute($user_id);
 
-my ($credito_actual) = $sth_credito->fetchrow_array;
-my $credito_final = $credito_actual - $totalD;
+my ($tarjeta_id) = $sth_tarjeta_id->fetchrow_array;
 
-my $query_update_credito = "UPDATE usuario SET credito = ? WHERE id = ?";
-my $sth_update_credito   = $dbh->prepare($query_update_credito);
-$sth_update_credito->execute($credito_final, $user_id);
+my $query_saldo = "SELECT saldo FROM tarjeta WHERE id = ?";
+my $sth_saldo = $dbh->prepare($query_saldo);
+$sth_saldo->execute($tarjeta_id);
+
+my ($saldo_actual) = $sth_saldo->fetchrow_array;
+my $saldo_final = $saldo_actual - $totalD;
+
+my $query_update_saldo = "UPDATE tarjeta SET saldo = ? WHERE id = ?";
+my $sth_update_saldo   = $dbh->prepare($query_update_saldo);
+$sth_update_saldo->execute($saldo_final, $tarjeta_id);
 
 #print STDERR "Content-Type: application/json\n\n";
 print $cgi->header("application/json");
 
-$credito_final = sprintf("%.2f", $credito_final);
-my $json_data = encode_json({ creditoF => $credito_final });
+$saldo_final = sprintf("%.2f", $saldo_final);
+my $json_data = encode_json({ saldoF => $saldo_final });
 print $json_data;
 
 $dbh->disconnect();
