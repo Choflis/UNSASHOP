@@ -1,19 +1,14 @@
 Cambios por realizar:
 
-<<<<<<< HEAD
-=======
-agregar las imagenes de los productos a la carpeta img
-
->>>>>>> 9aa14c2265c16d53c9587f046fa280931edefb83
 HTML:
 
     -opciones para el vendedor: agregar, modificar y eliminar producto.
     -footer html.
-    -contenedor para el saldo del usuario.
+        //-contenedor para el saldo del usuario.
     -html segun el tipo de cuenta, mostrar en ves de perfil el nombre de usuario.
     -boton de cerrar sesion en lugar de la opcion de acceder, al momento que ya exista una sesion iniciada.
-    -colocar image/x-icon a todos los html.
-    -quitar el placeholder de perfil.html.
+        //-colocar image/x-icon a todos los html.
+        //-quitar el placeholder de perfil.html.
     -agreagar espacios en aquellas partes que se requiera ingresar datos, para mostrar los errores.
 
 CSS:
@@ -35,8 +30,7 @@ PERL:
     
 JAVASCRIPT:
     
-    -crear ajax para mostrar el saldo que el cliente tenga en la base de datos.
+        //-crear ajax para mostrar el saldo que el cliente tenga en la base de datos.
 
 SQL:
-
-    -por ahora sin cambios.
+        //-agregar credito a los usuarios.

@@ -98,3 +98,49 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error al procesar el formulario:', error));
     });
 });*/
+
+//Funcionalidad de cambiar boton ACCEDER a CERRAR SESION
+document.addEventListener('DOMContentLoaded', function () {
+    const loginBtn = document.getElementById('login-btn');
+
+    // Función para verificar el estado de inicio de sesión
+    function checkLoginStatus() {
+        // Hacer una solicitud AJAX al servidor para verificar el estado de inicio de sesión
+        // Puedes usar Fetch API o XMLHttpRequest
+
+        // Ejemplo con Fetch API:
+        fetch('cgi-bin/check_login_status.pl')
+            .then(response => response.json())
+            .then(data => {
+                if (data.isLoggedIn) {
+                    // Si el usuario está autenticado, cambia el texto a "CERRAR SESIÓN"
+                    loginBtn.textContent = 'CERRAR SESIÓN';
+                    // Agrega un evento al botón para manejar el cierre de sesión
+                    loginBtn.addEventListener('click', function () {
+                        // Realiza acciones para cerrar la sesión (puede ser otra solicitud AJAX al servidor)
+                        // Por ejemplo, redirige a una página de cierre de sesión
+                        fetch('logout.pl')
+                            .then(response => {
+                                if (response.ok) {
+                                    // Puedes realizar más acciones después de cerrar sesión, si es necesario
+                                    window.location.href = 'index.html';
+                                } else {
+                                    console.error('Error al cerrar sesión:', response.statusText);
+                                }
+                            })
+                            .catch(error => console.error('Error al cerrar sesión:', error));
+                    });
+                } else {
+                    // Si el usuario no está autenticado, vuelve al texto original "ACCEDER"
+                    loginBtn.textContent = 'ACCEDER';
+                    // Elimina el evento de cierre de sesión
+                    loginBtn.removeEventListener('click', function () {});
+                }
+            })
+            .catch(error => console.error('Error al verificar el estado de inicio de sesión:', error));
+    }
+
+    // Llama a la función al cargar la página
+    checkLoginStatus();
+});
+
