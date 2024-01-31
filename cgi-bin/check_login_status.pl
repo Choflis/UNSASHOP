@@ -21,7 +21,7 @@ my $dsn = "dbi:mysql:database=unsashop;host=127.0.0.1";
 my $dbh = DBI->connect($dsn, $db_user, $db_password, { RaiseError => 1, PrintError => 1 })
         or die "Error de conexión: $DBI::errstr";
 
-my $query;para expl
+my $query; 
 $query = "SELECT 1 FROM $user_type WHERE id = ?";
 
 my $sth = $dbh->prepare($query);

@@ -23,8 +23,9 @@
             <ul class="links">
                 <span class="close-btn material-symbols-rounded">Cerrar</span>
                 <div class="creditoUser" id="credito-nav">s/.0.00</div>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a id="perfil-nav" href="perfil.html">Perfil</a></li>
                 <button id="login-btn" class="login-btn">ACCEDER</button>
+                <button id="login-btn" class="login-btn">SALIR</button>
             </ul>
             
         </nav>
@@ -202,6 +203,12 @@
               <span class="precio-item"></span>
               <button class="boton-item">Agregar al Carrito</button>
             </div>
+            <div class="item">
+              <span class="titulo-item">Agrega un producto</span>
+              <img src="img/agregar.png" alt="" class="img-item">
+              <span class="precio-item">.</span>
+              <button class="boton-item">Crear</button>
+            </div>
           </div>
 
 
@@ -251,10 +258,11 @@
                         s/.1.00
                     </span>
                 </div>
-                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
+                <button value="0.00" class="btn-pagar" id="pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
             </div>
         </div>
     </section>
-    <script src="js/loadProducts.js"></script> 
+    <script src="js/loadData.js"></script> 
+    <script src="js/compras.js"></script> 
 </body>
 </html>

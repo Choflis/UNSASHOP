@@ -37,25 +37,3 @@ function enviarFormularioRegistro() {
         console.error('Error en la solicitud:', error);
     });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  var xhr = new XMLHttpRequest();
-
-  xhr.open('GET', 'cgi-bin/obtener_credito.pl?nombre_usuario=nombre_de_usuario', true);
-
-  xhr.onload = function () {
-      if (xhr.status >= 200 && xhr.status < 300) {
-          var xmlDoc = xhr.responseXML;
-          var credito = xmlDoc.getElementsByTagName('credito')[0].textContent;
-
-          document.getElementById('credito-nav').textContent = 's/.' + credito;
-      } else {
-          console.error('Error al obtener el crédito del usuario');
-      }
-  };
-
-  xhr.onerror = function () {
-      console.error('Error de red al intentar obtener el crédito del usuario');
-  };
-  xhr.send();
-});

@@ -1,4 +1,6 @@
 var carritoVisible = false;
+var totalFinal = 0;
+var pagarButton = document.getElementById("pagar");
 
 if(document.readyState == 'loading'){
     document.addEventListener('DOMContentLoaded', ready)
@@ -41,7 +43,7 @@ function ready(){
 }
 //eliminar todos los elementos del carrito y lo ocultamos
 function pagarClicked(){
-    alert("Gracias por la compra");
+    alert("Compra realizada con éxito");
     //eliminar todos los elmentos del carrito
     var carritoItems = document.getElementsByClassName('carrito-items')[0];
     while (carritoItems.hasChildNodes()){
@@ -169,6 +171,7 @@ function ocultarCarrito(){
         items.style.width = '100%';
     }
 }
+
 //actualiza el total de Carrito
 function actualizarTotalCarrito() {
     var carritoContenedor = document.getElementsByClassName('carrito')[0];
@@ -186,13 +189,35 @@ function actualizarTotalCarrito() {
     }
 
     total = total.toFixed(2); // Mantener dos decimales
+    pagarButton.value = total;
+    console.log("Costo... ", total, "valor: ", pagarButton.value);
     document.getElementsByClassName('carrito-precio-total')[0].innerText = 's/.' + total.toLocaleString("es");
 }
 
-
-
-
-
-
-
-
+/*document.addEventListener("DOMContentLoaded", function() {
+    var pagarButton = document.getElementById("pagar");
+    console.log("totalFinal entrante:", totalFinal);
+    pagarButton.addEventListener("click", function() {
+        fetch("cgi-bin/pagar.pl", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                total: totalFinal
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const creditoA = document.getElementById("credito-nav");
+            creditoA.textContent = "s/." + data.creditoF;
+            console.log("costoFinal:", totalFinal);
+            console.log("credito actualizado a:", data.creditoF);
+            //totalFinal = 0;
+        })
+        .catch(error => {
+            console.error("Error al realizar la solicitud de compra:", error);
+        });
+    });
+    
+});*/

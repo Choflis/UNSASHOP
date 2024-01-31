@@ -39,9 +39,9 @@ function ocultarElementosVacios() {
     }
 }
 
-//Cargar credito
+//Cargar credito y perfil
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('cgi-bin/get_credito.pl')
+    fetch('cgi-bin/get_datos.pl')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -51,13 +51,17 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             console.log('Datos recibidos:', data);
             const creditoUsuario = document.getElementById('credito-nav');
-            if (creditoUsuario && data && data.credito !== undefined) {
+            const perfilUsuario = document.getElementById('perfil-nav');
+
+            if (creditoUsuario && data && data.credito !== undefined &&
+                perfilUsuario && data && data.perfil !== undefined) {
                 creditoUsuario.textContent = `s/.${data.credito}`;
+                perfilUsuario.textContent = `${data.perfil}`;
             } else {
-                console.error('Error: Datos de credito no disponibles en la respuesta.');
+                console.error('Error: Datos no disponibles en la respuesta.');
             }
         })
-        .catch(error => console.error('Error al obtener el credito del usuario:', error));
+        .catch(error => console.error('Error al obtener los datos del usuario:', error));
 });
 
 //Mostrar errores de inicio de sesion
