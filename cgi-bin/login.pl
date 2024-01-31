@@ -57,7 +57,7 @@ sub login {
         $session->flush();
 
         my $cookie = $cgi->cookie(
-            -name    => "id_session_$type",
+            -name    => "id_session",
             -value   => $session->id(),
             -expires => time + $session_time,
             -max-age => $session_time,

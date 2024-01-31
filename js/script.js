@@ -6,7 +6,6 @@ function enviarFormularioRegistro() {
     var card_number = document.getElementById('card_number').value;
     var card_expire = document.getElementById('card_expire').value;
     var card_code = document.getElementById('card_code').value;
-    
 
     fetch('./cgi-bin/registro.pl', {
         method: 'POST',

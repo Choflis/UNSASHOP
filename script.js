@@ -33,6 +33,9 @@ signupLoginLink.forEach(link => {
         if (link.id === 'signup-link') {
             redirectToRegistration(); // Llama a la función de redirección
         }
+        if (link.id === 'recuperar') {
+            redirectToRegistrations(); // Llama a la función de redirección
+        }
     });
 });
 
@@ -45,7 +48,10 @@ function redirectToRegistration() {
     // Lógica para redirigir a la página de registro
     window.location.href = 'registro.html';
 }
-
+function redirectToRegistrations() {
+    // Lógica para redirigir a la página de registro
+    window.location.href = 'recuperarPassword.html';
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   var sessionUsername = sessionStorage.getItem("session_username");

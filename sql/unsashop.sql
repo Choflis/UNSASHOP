@@ -67,7 +67,8 @@ CREATE TABLE `usuario` (
   `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL,
   `pregunta1` varchar(15) NOT NULL,
-  `pregunta2` varchar(15) NOT NULL
+  `pregunta2` varchar(15) NOT NULL,
+  `credito` decimal(10,2) NOT NULL DEFAULT '500.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -88,7 +89,8 @@ CREATE TABLE `vendedor` (
   `correo` varchar(30) NOT NULL,
   `tarjeta_id` int(11) NOT NULL,
   `pregunta1` varchar(15) NOT NULL,
-  `pregunta2` varchar(15) NOT NULL
+  `pregunta2` varchar(15) NOT NULL,
+  `credito` decimal(10,2) NOT NULL DEFAULT '500.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
