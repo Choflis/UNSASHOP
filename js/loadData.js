@@ -5,11 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const items = document.querySelectorAll('.item');
   
+            console.log("accediendo productos...");
             data.forEach((producto, index) => {
                 const item = items[index];
+                item.setAttribute("data-id", `${producto.id}`);
                 item.querySelector('.titulo-item').textContent = producto.nombre;
                 item.querySelector('.img-item').src = producto.imagen;
                 item.querySelector('.precio-item').textContent = `s/.${producto.precio}`;
+                item.querySelector('.vendedor-item').textContent = `${producto.vendedor}`;
+                item.querySelector('.stock-item').textContent = `Unidades: ${producto.stock}`;
                 item.querySelector('.boton-item').setAttribute('onclick', `agregarAlCarrito('${producto.nombre}', '${producto.precio}')`);
             });
             ocultarElementosVacios();
@@ -32,8 +36,10 @@ function ocultarElementosVacios() {
         const titulo = elementos[i].getElementsByClassName("titulo-item")[0].innerText.trim();
         const imgSrc = elementos[i].getElementsByClassName("img-item")[0].getAttribute("src").trim();
         const precio = elementos[i].getElementsByClassName("precio-item")[0].innerText.trim();
+        const vendedor = elementos[i].getElementsByClassName("vendedor-item")[0].innerText.trim();
+        const stock = elementos[i].getElementsByClassName("stock-item")[0].innerText.trim();
   
-      if (!titulo || !imgSrc || !precio) {
+      if (!titulo || !imgSrc || !precio || !vendedor || !stock) {
             elementos[i].style.display = "none";
       }
     }

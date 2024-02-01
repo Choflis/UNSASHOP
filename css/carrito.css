@@ -55,6 +55,14 @@ header h1{
     text-align: center;
     text-transform: uppercase;
 }
+.contenedor .contenedor-items .item .vendedor-item,
+.contenedor .contenedor-items .item .stock-item{
+    font-size: 16px;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
 .contenedor .contenedor-items .item .precio-item{
     display: block;
     text-align: center;
@@ -74,7 +82,7 @@ header h1{
 }
 .carrito{
     border: 1px solid #666;
-    width: 35%;
+    width: 40%;
     margin-top: 30px;
     border-radius: 10px;
     overflow: hidden;
@@ -106,6 +114,7 @@ header h1{
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase;
+    margin: 0px 40px 0px 0px;
 }
 .carrito .carrito-item .selector-cantidad{
     display: inline-block;
@@ -187,7 +196,24 @@ header h1{
 .carrito-total .btn-pagar:hover{
     scale: 1.05;
 }
-
+.carrito-total .btn-pagarIndex{
+    display: block;
+    width: 100%;
+    border: none;
+    background: #f39a1f;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+}
+.carrito-total .btn-pagarIndex:hover{
+    scale: 1.05;
+}
 @media screen and (max-width: 850px) {
     .contenedor {
       display: block;

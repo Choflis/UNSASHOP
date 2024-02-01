@@ -46,6 +46,8 @@ function pagarClicked(){
     alert("Compra realizada con éxito");
     //eliminar todos los elmentos del carrito
     var carritoItems = document.getElementsByClassName('carrito-items')[0];
+    var productosCarrito = [];
+
     while (carritoItems.hasChildNodes()){
         carritoItems.removeChild(carritoItems.firstChild)
     }
@@ -81,6 +83,8 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
     var item = document.createElement('div');
     item.classList.add = ('item');
     var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
+
+    var idProducto = item.getAttribute('data-id');
 
     //controlamos que el item que intenta ingresar no se encuentre en el carrito
     var nombresItemsCarrito = itemsCarrito.getElementsByClassName('carrito-item-titulo');
@@ -129,20 +133,32 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
 function sumarCantidad(event){
     var buttonClicked = event.target;
     var selector = buttonClicked.parentElement;
+    //obtener cantidad de elementos
+    var cantidadElement = selector.getElementsByClassName('carrito-item-cantidad')[0];
     console.log(selector.getElementsByClassName('carrito-item-cantidad')[0].value);
+
     var cantidadActual = selector.getElementsByClassName('carrito-item-cantidad')[0].value;
     cantidadActual++;
+    //actualizar cantidad
+    cantidadElement.dataset.cantidad = cantidadActual;
+    console.log("cantidad: ", cantidadActual);
     selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
-    actualizarTotalCarrito();
+    actualizarTotalCarrito();   
 }
 //resta en uno la cantidad del elemento seleccionado
-function restarCantidad(event){
+function restarCantidad(event){ 
     var buttonClicked = event.target;
     var selector = buttonClicked.parentElement;
+    //obtener cantidad de elementos
+    var cantidadElement = selector.getElementsByClassName('carrito-item-cantidad')[0];
     console.log(selector.getElementsByClassName('carrito-item-cantidad')[0].value);
+    
     var cantidadActual = selector.getElementsByClassName('carrito-item-cantidad')[0].value;
     cantidadActual--;
     if(cantidadActual>=1){
+        //actualizar cantidad
+        cantidadElement.dataset.cantidad = cantidadActual;
+        console.log("cantidad: ", cantidadActual);
         selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
         actualizarTotalCarrito();
     }
@@ -193,31 +209,3 @@ function actualizarTotalCarrito() {
     console.log("Costo... ", total, "valor: ", pagarButton.value);
     document.getElementsByClassName('carrito-precio-total')[0].innerText = 's/.' + total.toLocaleString("es");
 }
-
-/*document.addEventListener("DOMContentLoaded", function() {
-    var pagarButton = document.getElementById("pagar");
-    console.log("totalFinal entrante:", totalFinal);
-    pagarButton.addEventListener("click", function() {
-        fetch("cgi-bin/pagar.pl", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                total: totalFinal
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            const creditoA = document.getElementById("credito-nav");
-            creditoA.textContent = "s/." + data.creditoF;
-            console.log("costoFinal:", totalFinal);
-            console.log("credito actualizado a:", data.creditoF);
-            //totalFinal = 0;
-        })
-        .catch(error => {
-            console.error("Error al realizar la solicitud de compra:", error);
-        });
-    });
-    
-});*/

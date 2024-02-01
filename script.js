@@ -5,6 +5,7 @@ const showPopupBtn = document.querySelector(".login-btn");
 const formPopup = document.querySelector(".form-popup");
 const hidePopupBtn = formPopup.querySelector(".close-btn");
 const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+const botonPagar = document.querySelector(".btn-pagarIndex");
 
 //menu responsive para movil
 hamburgerBtn.addEventListener("click", () => {
@@ -16,6 +17,11 @@ hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
 
 //animacion popup
 showPopupBtn.addEventListener("click", () => {
+    document.body.classList.toggle("show-popup");
+});
+
+//animacion popup
+botonPagar.addEventListener("click", () => {
     document.body.classList.toggle("show-popup");
 });
 

@@ -1,43 +1,106 @@
 //Cargar productos
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('cgi-bin/get_products.pl')
+function cargarProductos() {
+    fetch('cgi-bin/get_productsV.pl')
         .then(response => response.json())
         .then(data => {
             const items = document.querySelectorAll('.item');
-  
+
             data.forEach((producto, index) => {
                 const item = items[index];
                 item.querySelector('.titulo-item').textContent = producto.nombre;
                 item.querySelector('.img-item').src = producto.imagen;
                 item.querySelector('.precio-item').textContent = `s/.${producto.precio}`;
-                item.querySelector('.boton-item').setAttribute('onclick', `agregarAlCarrito('${producto.nombre}', '${producto.precio}')`);
+                item.setAttribute('data-indice', index + 1);
+
+                const botonEliminar = item.querySelector('.boton-item');
+                botonEliminar.setAttribute('onclick', `eliminarProducto('${producto.nombre}')`);
             });
             ocultarElementosVacios();
-            //obtenerCreditoUsuario();
         })
         .catch(error => console.error('Error al obtener los productos:', error));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    cargarProductos();
 });
   
-//Agregar boton "Agregar al carrito"
-function agregarAlCarrito(nombre, precio) {
-        console.log(`Agregado al carrito: ${nombre} - Precio: ${precio}`);
-  }
+//Eliminar producto
+const productosContainer = document.getElementById("productos-container");
+function eliminarProducto(nombre) {
+    fetch('cgi-bin/eliminar_producto.pl', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nombre: nombre }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === 1) {
+                const productoAEliminar = document.querySelector(`.item[data-nombre="${nombre}"]`);
+                if (productoAEliminar) {
+                    productoAEliminar.tituloItem.textContent = null;
+                    productoAEliminar.imgItem.src = null;
+                    productoAEliminar.precioItem.textContent = null;
+                    productoAEliminar.style.display = "none";
+                }
+                cargarProductos();
+                ocultarElementosVacios();
+                ocultarUltimoProducto();
+                cargarProductos();
+                ocultarElementosVacios();
+                // Llamar a la función para cargar productos y actualizar la interfaz
+            } else {
+                console.error('Error al eliminar el producto:', data.error);
+            }
+        })
+        .catch(error => console.error('Error al eliminar el producto:', error));
+}
+
+
   
 //Ocultar elementos no llenados
 function ocultarElementosVacios() {
     const contenedor = document.getElementById("productos-container");
     const elementos = contenedor.getElementsByClassName("item");
-  
+
     for (let i = 0; i < elementos.length; i++) {
         const titulo = elementos[i].getElementsByClassName("titulo-item")[0].innerText.trim();
         const imgSrc = elementos[i].getElementsByClassName("img-item")[0].getAttribute("src").trim();
         const precio = elementos[i].getElementsByClassName("precio-item")[0].innerText.trim();
-  
-      if (!titulo || !imgSrc || !precio) {
+
+        if ((!titulo || !imgSrc || !precio) && elementos[i].style.display !== "none") {
             elementos[i].style.display = "none";
-      }
+        }
     }
 }
+
+//Oculta ultimo producto
+// Oculta el último producto que no sea "Agrega un producto" y que esté lleno
+function ocultarUltimoProducto() {
+    const productosContainer = document.getElementById("productos-container");
+    const items = productosContainer.querySelectorAll('.item');
+    
+    // Encuentra el último producto visible que no sea "Agrega un producto" y que esté lleno
+    let ultimoProductoIndex = items.length - 1;
+    while (ultimoProductoIndex >= 0) {
+        const ultimoProducto = items[ultimoProductoIndex];
+        const titulo = ultimoProducto.querySelector('.titulo-item').textContent.trim();
+        const imgSrc = ultimoProducto.querySelector('.img-item').getAttribute('src').trim();
+        const precio = ultimoProducto.querySelector('.precio-item').textContent.trim();
+
+        // Considera elementos con display: none
+        const isVisible = window.getComputedStyle(ultimoProducto).display !== 'none';
+
+        if (isVisible && titulo && imgSrc && precio && !titulo.includes('Agrega un producto')) {
+            ultimoProducto.style.display = "none";
+            break;
+        }
+
+        ultimoProductoIndex--;
+    }
+}
+
 
 //Cargar credito y perfil
 document.addEventListener("DOMContentLoaded", function() {
@@ -63,91 +126,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => console.error('Error al obtener los datos del usuario:', error));
 });
-
-//Mostrar errores de inicio de sesion
-/*document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector('#form-login');
-    const errorLabel = document.getElementById('errorLogin');
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-
-        fetch('cgi-bin/login.pl', {
-            method: 'post',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data, "text/xml");
-
-            const errors = xmlDoc.getElementsByTagName("error");
-
-            if (errors.length > 0) {
-                const element = errors[0].getElementsByTagName("element")[0].textContent;
-                const message = errors[0].getElementsByTagName("message")[0].textContent;
-
-                if (element === "login") {
-                    // Aquí puedes manejar el mensaje de error específico para el intento de inicio de sesión
-                } else {
-                    errorLabel.textContent = message;
-                }
-            } else {
-                // Limpiar el mensaje de error si no hay errores
-                errorLabel.textContent = '';
-            }
-        })
-        .catch(error => console.error('Error al procesar el formulario:', error));
-    });
-});*/
-
-//Funcionalidad de cambiar boton ACCEDER a CERRAR SESION
-/*document.addEventListener('DOMContentLoaded', function () {
-    const loginBtn = document.getElementById('login-btn');
-
-    // Función para verificar el estado de inicio de sesión
-    function checkLoginStatus() {
-        // Hacer una solicitud AJAX al servidor para verificar el estado de inicio de sesión
-        // Puedes usar Fetch API o XMLHttpRequest
-
-        // Ejemplo con Fetch API:
-        fetch('cgi-bin/check_login_status.pl')
-            .then(response => response.json())
-            .then(data => {
-                if (data.isLoggedIn) {
-                    // Si el usuario está autenticado, cambia el texto a "CERRAR SESIÓN"
-                    loginBtn.textContent = 'CERRAR SESIÓN';
-                    // Agrega un evento al botón para manejar el cierre de sesión
-                    loginBtn.addEventListener('click', function () {
-                        // Realiza acciones para cerrar la sesión (puede ser otra solicitud AJAX al servidor)
-                        // Por ejemplo, redirige a una página de cierre de sesión
-                        fetch('logout.pl')
-                            .then(response => {
-                                if (response.ok) {
-                                    // Puedes realizar más acciones después de cerrar sesión, si es necesario
-                                    window.location.href = 'index.html';
-                                } else {
-                                    console.error('Error al cerrar sesión:', response.statusText);
-                                }
-                            })
-                            .catch(error => console.error('Error al cerrar sesión:', error));
-                    });
-                } else {
-                    // Si el usuario no está autenticado, vuelve al texto original "ACCEDER"
-                    loginBtn.textContent = 'ACCEDER';
-                    // Elimina el evento de cierre de sesión
-                    loginBtn.removeEventListener('click', function () {});
-                }
-            })
-            .catch(error => console.error('Error al verificar el estado de inicio de sesión:', error));
-    }
-
-    // Llama a la función al cargar la página
-    checkLoginStatus();
-});*/
-
 //Funcionalidad de interaccion SALIR
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("salir-btn").addEventListener("click", function() {
