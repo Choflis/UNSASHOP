@@ -1,27 +1,41 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var cantidadesPorId = {};
     var pagarButton = document.getElementById("pagar");
     var productosContainer = document.getElementById("productos-container");
+    var items = productosContainer.querySelectorAll(".item");
     
     pagarButton.addEventListener("click", function() {
-        totalFinal = pagarButton.value;
-        console.log("totalFinal entrante:", totalFinal);
+        var cantidadesPorId = {};
+        
+        items.forEach(function(item){
+            var cantidadC = item.getAttribute("data-cantidad");
+            var idC = item.getAttribute("data-id");
+            console.log("ID PR: ", idC, "CANTIDAD: ", cantidadC);
+            //cantidadesPorId[idC] = parseInt(cantidadC);
+            cantidadesPorId[idC] = cantidadC;
+        });
 
-        var productosF = [];
-        for (const [productId, cantidad] of Object.entries(productosMap)) {
-            if (cantidad > 0) {
-                productosF.push({ id: productId, cantidad: cantidad });
+        var totalFinal = pagarButton.value;
+        console.log("totalFinal entrante:", totalFinal);
+        console.log("productos seleccionados: ", cantidadesPorId);
+    
+        var productosCLA = [];
+        var productosCLH = {};
+        Object.entries(cantidadesPorId).forEach(([idC, cantidadC]) => {
+            if (cantidadC > 0) {
+                productosCLA.push({ id: idC, cantidadC: cantidadC });
+                productosCLH[idC] = cantidadC;
+                console.log("id prueba: ", idC);
             }
-        }
+        });
+        console.log(productosCLA);
+        console.log(productosCLH);
 
         fetch("cgi-bin/pagar.pl", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                productos: productosF
-            })
+            body: JSON.stringify(//)
         })
         .then(response => response.json())
         .then(data => {
@@ -35,5 +49,4 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error al realizar la solicitud de compra:", error);
         });
     });
-
 });

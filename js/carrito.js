@@ -60,9 +60,11 @@ function agregarAlCarritoClicked(event){
     var titulo = item.getElementsByClassName('titulo-item')[0].innerText;
     var precio = item.getElementsByClassName('precio-item')[0].innerText;
     var imagenSrc = item.getElementsByClassName('img-item')[0].src;
+    var idS = item.getAttribute("data-id");
+    var cantidadS = item.getAttribute("data-cantidad");
     console.log(imagenSrc);
 
-    agregarItemAlCarrito(titulo, precio, imagenSrc);
+    agregarItemAlCarrito(titulo, precio, imagenSrc, idS, cantidadS);
 
     hacerVisibleCarrito();
 }
@@ -79,7 +81,7 @@ function hacerVisibleCarrito(){
 }
 
 //funcion que agrega un item al carrito
-function agregarItemAlCarrito(titulo, precio, imagenSrc){
+function agregarItemAlCarrito(titulo, precio, imagenSrc, idS, cantidadS){
     var item = document.createElement('div');
     item.classList.add = ('item');
     var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
@@ -141,7 +143,8 @@ function sumarCantidad(event){
     cantidadActual++;
     //actualizar cantidad
     cantidadElement.dataset.cantidad = cantidadActual;
-    console.log("cantidad: ", cantidadActual);
+    console.log("cantidad console: ", cantidadActual);
+    //console.log("cantidad data-: ", getAttribute("data-cantidad"));
     selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
     actualizarTotalCarrito();   
 }

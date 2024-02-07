@@ -38,7 +38,7 @@ sub validate_data {
     #name que no pase del tamaño permitido
     #precio positivo y en numeros
     #url que tenga la forma de una con una expresion regular
-    #stock,0 o numero positivo
+    #stock,1 a mas
 
     #para cuando agregue un producto con el nombre ya existente, entonces se le agregue el numero
     #de stock

@@ -1,5 +1,5 @@
 var productoActual;
-
+/*
 function editarPopup(nombre, imagen, precio) {
     productoActual = {
         nombre: nombre,
@@ -19,7 +19,7 @@ function abrirPopupEditar() {
     var popupEditar = document.getElementById('popupEditar');
     popupEditar.style.display = 'block';
 }
-
+*/
 function guardarCambios() {
     // Obtener los valores modificados
     var nombreModificado = document.getElementById('nombre-popup-edit').value;
@@ -31,38 +31,47 @@ function guardarCambios() {
     if (imagenModificada) productoActual.imagen = imagenModificada;
     if (precioModificado) productoActual.precio = precioModificado;
 
-    // Aquí puedes agregar lógica para guardar los cambios en el producto
     cerrarPopup();
 }
-
+/*
 function eliminarProducto() {
-    // Aquí puedes agregar lógica para eliminar el producto
+    
     console.log("Eliminar producto:", productoActual);
     cerrarPopup();
 }
-
+*/
 function abrirPopup() {
     var popup = document.getElementById('popupAgregar');
     popup.style.display = 'block';
 }
-
+/*
 function abrirPopupEditar() {
     var popupEditar = document.getElementById('popupEditar');
     popupEditar.style.display = 'block';
 }
-
+*/
 function cerrarPopup() {
     var popup = document.getElementById('popupAgregar');
     popup.style.display = 'none';
 
+    /*
     var popupEditar = document.getElementById('popupEditar');
     popupEditar.style.display = 'none';
+    */
 }
 
 function agregarProducto() {
     var nombre = document.getElementById('nombre-popup').value;
     var imagen = document.getElementById('imagen-popup').value;
     var precio = document.getElementById('precio-popup').value;
+    var stock = document.getElementById('stock-popup').value;
+
+    var producto = {
+        nombre: nombre,
+        imagen: imagen,
+        precio: precio,
+        stock: stock
+    };
 
     if (nombre && imagen && precio) {
         var productosContainer = document.querySelector('.contenedor-items');
@@ -70,21 +79,33 @@ function agregarProducto() {
         var productoDiv = document.createElement('div');
         productoDiv.classList.add('item');
 
-        var productoHTML = `
-            <span class="titulo-item">${nombre}</span>
-            <img src="${imagen}" alt="" class="img-item">
-            <span class="precio-item">s/.${precio}</span>
-            <button class="boton-item" onclick="editarPopup('${nombre}', '${imagen}', ${precio})">Editar producto</button>
-        `;
-
         productoDiv.innerHTML = productoHTML;
         productosContainer.insertBefore(productoDiv, productosContainer.lastElementChild);
 
-        document.getElementById('nombre-popup').value = '';
-        document.getElementById('imagen-popup').value = '';
-        document.getElementById('precio-popup').value = '';
         cerrarPopup();
     } else {
         alert('Por favor, completa todos los campos.');
+    }
+
+    // Verificacion de datos o entrada
+    if (true){
+        fetch("tu_script_perl.pl", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(producto)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Datos procesados correctamente:", data);
+            otraFuncion();
+        })
+        .catch(error => {
+            console.error("Error al procesar los datos:", error);
+        });
+    
+    } else {
+        alert('Ingrese datos válidos.');
     }
 }

@@ -310,7 +310,16 @@ form button:hover {
     height: 14px;
     margin-right: 7px;
 }
-
+.boton-add1{
+    display: block;
+    margin: 10px auto;
+    border: none;
+    background-color: #5223d4;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 	
 @media (max-width: 950px) {
     .navbar :is(.hamburger-btn, .close-btn) {

@@ -24,7 +24,7 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password, { RaiseError => 1, PrintErr
 my $query;
 my $query = "
     SELECT u.login_usuario, t.saldo
-    FROM usuario u
+    FROM $user_type u
     LEFT JOIN tarjeta t ON u.tarjeta_id = t.id
     WHERE u.ID = ?;
 ";
