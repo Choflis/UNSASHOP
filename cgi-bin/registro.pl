@@ -33,7 +33,7 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password);
 my %errors;
 
 if (!$nombreC || length($nombreC) == 0 || length($nombreC) > 30) {
-    $errors{nombreC} = "NombreC invalido.";
+    $errors{nombreC} = "Nombre invalido.";
 }
 
 if (!$dni || length($dni) == 0 || length($dni) != 8) {
@@ -80,10 +80,10 @@ if (!$pregunta2 || length($pregunta2) == 0 || length($pregunta2) > 15) {
     $errors{pregunta2} = "Respuesta 2 invalida.";
 }
 
-my $card_expire_time;
-if ($fecha_caducidad_tarjeta && $fecha_caducidad_tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})$/) {
-    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
-}
+#my $card_expire_time;
+#if ($fecha_caducidad_tarjeta && $fecha_caducidad_tarjeta =~ /^(\d{4})-(\d{2})-(\d{2})$/) {
+#    $card_expire_time = DateTime->new(year => $1, month => $2, day => $3);
+#}
 
 #if (!$card_expire_time || DateTime->now > $card_expire_time) {
 #    $errors{fecha_caducidad_tarjeta} = "Fecha de expiración de tarjeta invalida.";
