@@ -163,12 +163,12 @@
             cantidadElement.dataset.cantidad = cantidadActual;
             console.log("cantidad: ", cantidadActual);
             selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
-            const p = cantidadElement.parentNode;
+            /*const p = cantidadElement.parentNode;
             const a = p.parentNode;
             const idPr = a.getAttribute('data-id');
             const elemento = document.querySelector(`[data-id="${idPr}"]`);
             elemento.setAttribute('data-cantidad', cantidadActual);
-            console.log("ACT: ", elemento.getAttribute('data-cantidad'));
+            console.log("ACT: ", elemento.getAttribute('data-cantidad'));*/
             actualizarTotalCarrito();
         }
     }
@@ -209,12 +209,19 @@
             var precio = parseFloat(precioElemento.innerText.replace('s/.', '').replace(',', ''));
             var cantidadItem = item.getElementsByClassName('carrito-item-cantidad')[0];
             var cantidad = parseFloat(cantidadItem.value); 
+            //var prodContainer = document.getElementById("productos-container");
+            
+            /*var dataId = item.getAttribute("data-id");
+            var elementProd = prodContainer.querySelector('[data-id="' + dataId + '"]');
+            elementProd.dataset.id = cantidad;
+            console.log("cantidad carro_: ", cantidad);*/
 
             total += precio * cantidad;
         }
 
         total = total.toFixed(2); // Mantener dos decimales
         pagarButton.value = total;
+        totalFinal = total;
         console.log("Costo... ", total, "valor: ", pagarButton.value);
         document.getElementsByClassName('carrito-precio-total')[0].innerText = 's/.' + total.toLocaleString("es");
     }

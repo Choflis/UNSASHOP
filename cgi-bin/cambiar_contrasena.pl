@@ -28,14 +28,11 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password);
 update_password();
 
 sub update_password {
-    unless ($tipoUsuario eq "vendedor" || $tipoUsuario eq "usuario") {
-        $errors{tipoUsuario} = "Tipo de usuario no válido.";
-    }
 
     # Validar la nueva contraseña
-    if (length($nueva_contraseña) < 8) {
-        $errors{nuevaContraseña} = "La contraseña debe tener al menos 8 caracteres.";
-    }
+    #if (length($nueva_contraseña) < 8) {
+    #    $errors{nuevaContraseña} = "La contraseña debe tener al menos 8 caracteres.";
+    #}
 
     if (%errors) {
         my $response_data = {
@@ -46,7 +43,7 @@ sub update_password {
         return;
     }
 
-    my $sql = "UPDATE $tipoUsuario SET contraseña = ? WHERE correo = ?";
+    my $sql = "UPDATE $tipoUsuario SET login_clave = ? WHERE correo = ?";
     my $sth = $dbh->prepare($sql);
     my $result = $sth->execute($nueva_contraseña, $correo);
 
