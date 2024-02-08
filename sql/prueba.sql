@@ -54,7 +54,7 @@ VALUES (
   'vendedor',
   'HernanCZ',
   'hchoquehuancaz@unsa.edu.pe',
-  (SELECT id FROM tarjeta WHERE numero = '9876-5432-1098-7654'),
+  (SELECT id FROM tarjeta WHERE numero = '1234-5678-9012-3456'),
   'lia',
   'sol'
 );

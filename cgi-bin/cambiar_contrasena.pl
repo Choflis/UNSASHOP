@@ -9,13 +9,13 @@ use JSON;
 
 my $cgi = CGI->new;
 $cgi->charset("UTF-8");
-print $cgi->header('application/json');
+print $cgi->header("application/json");
 
 my $json_input = $cgi->param('POSTDATA');
 my $datos = decode_json($json_input);
 
 my $correo = $datos->{correo};
-my $nueva_contraseña = $datos->{nuevaContraseña};
+my $nueva_contrasena = $datos->{nuevaContrasena};
 my $tipoUsuario = $datos->{tipoUsuario};
 
 my %errors;
@@ -30,7 +30,7 @@ update_password();
 sub update_password {
 
     # Validar la nueva contraseña
-    #if (length($nueva_contraseña) < 8) {
+    #if (length($nueva_contrasena) < 8) {
     #    $errors{nuevaContraseña} = "La contraseña debe tener al menos 8 caracteres.";
     #}
 
@@ -45,7 +45,7 @@ sub update_password {
 
     my $sql = "UPDATE $tipoUsuario SET login_clave = ? WHERE correo = ?";
     my $sth = $dbh->prepare($sql);
-    my $result = $sth->execute($nueva_contraseña, $correo);
+    my $result = $sth->execute($nueva_contrasena, $correo);
 
     if ($result) {
         my $response_data = {

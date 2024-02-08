@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         body: JSON.stringify({
                             tipoUsuario: tipoUsuario,
                             correo: correo,
-                            nuevaContraseña: newPassword
+                            nuevaContrasena: newPassword
                         })
                     })
                     .then(response => {

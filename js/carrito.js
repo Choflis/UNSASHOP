@@ -1,6 +1,7 @@
     var carritoVisible = false;
     var totalFinal = 0;
     var pagarButton = document.getElementById("pagar");
+    var miArrayList = [];
 
     if(document.readyState == 'loading'){
         document.addEventListener('DOMContentLoaded', ready)
@@ -43,7 +44,6 @@
     }
     //eliminar todos los elementos del carrito y lo ocultamos
     function pagarClicked(){
-        alert("Compra realizada con éxito");
         //eliminar todos los elmentos del carrito
         var carritoItems = document.getElementsByClassName('carrito-items')[0];
         var productosCarrito = [];
@@ -86,7 +86,8 @@
         item.classList.add = ('item');
         var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
 
-        var idProducto = item.getAttribute('data-id');
+        //var idProducto = item.getAttribute('data-id');
+        miArrayList.push(idS);
 
         //controlamos que el item que intenta ingresar no se encuentre en el carrito
         var nombresItemsCarrito = itemsCarrito.getElementsByClassName('carrito-item-titulo');
@@ -176,10 +177,16 @@
     //eliminar el item seleccionado del carrito
     function eliminarItemCarrito(event){
         var buttonClicked = event.target;
-        buttonClicked.parentElement.parentElement.remove();
+        var carritoItem = buttonClicked.closest('.carrito-item'); // Obtener el elemento del carrito más cercano
+        var idProductoEliminar = carritoItem.getAttribute('data-id-C');
+        var index = miArrayList.indexOf(idProductoEliminar);
+        if (index !== -1) {
+            miArrayList.splice(index, 1);
+        }
+        carritoItem.remove();
         //actualizar el total del carrito
         actualizarTotalCarrito();
-
+    
         //oculta si el carrito esta vacio
         ocultarCarrito();
     }
@@ -194,6 +201,7 @@
         
             var items =document.getElementsByClassName('contenedor-items')[0];
             items.style.width = '100%';
+            miArrayList = [];
         }
     }
 
@@ -220,8 +228,9 @@
         }
 
         total = total.toFixed(2); // Mantener dos decimales
-        pagarButton.value = total;
         totalFinal = total;
+        var valorBotonPagar = "Total: " + totalFinal + ", Elementos: " + miArrayList.join(", ");
+        pagarButton.value = valorBotonPagar;
         console.log("Costo... ", total, "valor: ", pagarButton.value);
         document.getElementsByClassName('carrito-precio-total')[0].innerText = 's/.' + total.toLocaleString("es");
     }

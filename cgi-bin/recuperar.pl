@@ -29,7 +29,8 @@ my $dbh = DBI->connect($dsn, $db_user, $db_password);
 validate_data();
 
 sub validate_data {
-    if (length($correo) == 0 || $correo !~ /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/) {
+    if (length($correo) == 0) {
+    #if(length($correo) == 0 || $correo !~ /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/) {
         $errors{correo} = "Ingrese un correo electrónico válido.";
     }
 
@@ -80,4 +81,3 @@ sub verificar_datos_con_perfil {
     # Si la cuenta existe, retornar 1, de lo contrario, retornar 0
     return $count > 0 ? 1 : 0;
 }
-
