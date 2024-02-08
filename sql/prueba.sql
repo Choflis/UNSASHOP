@@ -156,3 +156,77 @@ VALUES (
     4.90,
     5
 );
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'BryanLRV'),
+    'Tijeras Layconsa',+
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/tijeras.jpg?raw=true',
+    4.90,
+    5
+);
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'BryanLRV'),
+    'Naranja',+
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/naranjas.jpg?raw=true',
+    1.00,
+    5
+);
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'BryanLRV'),
+    'hamburguesa de pollo',+
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/hamburguesas.jpg?raw=true',
+    4.90,
+    5
+);
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
+    'Gaseosas de china',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/gaseosas.jpg?raw=true',
+    2.90,
+    50
+);
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
+    'Donas',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/donas.jpg?raw=true',
+    2.90,
+    50
+);
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
+    'Cuadernos college',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/cuaderno.jpg?raw=true',
+    2.90,
+    50
+);
+
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
+    'Colores',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/colores.jpg?raw=true',
+    2.90,
+    50
+);
+
+INSERT INTO producto (vendedor_id, nombre, imagen, precio, stock)
+VALUES (
+    (SELECT id FROM vendedor WHERE login_usuario = 'HernanCZV'),
+    'Calculadora',
+    'https://github.com/Choflis/UNSASHOP/blob/main/img/calculadora.jpg?raw=true',
+    2.90,
+    50
+);
+
+

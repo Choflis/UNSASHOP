@@ -3,7 +3,7 @@ function recuperarContraseña() {
     const email = document.getElementById('email').value;
 
     // Realizar una solicitud al servidor para recuperar la contraseña
-    fetch("url_de_recuperacion", {
+    fetch('', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
