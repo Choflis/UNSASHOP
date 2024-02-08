@@ -98,7 +98,7 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc, idS, cantidadS){
     }
 
     var itemCarritoContenido = `
-        <div class="carrito-item">
+        <div class="carrito-item" data-cantidad-C=${cantidadS} data-id-C="${idS}">
             <img src="${imagenSrc}" width="80px" alt="">
             <div class="carrito-item-detalles">
                 <span class="carrito-item-titulo">${titulo}</span>

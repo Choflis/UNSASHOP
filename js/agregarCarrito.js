@@ -73,7 +73,7 @@ function agregarProducto() {
         stock: stock
     };
 
-    if (nombre && imagen && precio) {
+    if (nombre && imagen && precio && stock) {
         var productosContainer = document.querySelector('.contenedor-items');
 
         var productoDiv = document.createElement('div');
@@ -87,25 +87,21 @@ function agregarProducto() {
         alert('Por favor, completa todos los campos.');
     }
 
-    // Verificacion de datos o entrada
-    if (true){
-        fetch("tu_script_perl.pl", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(producto)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Datos procesados correctamente:", data);
-            otraFuncion();
-        })
-        .catch(error => {
-            console.error("Error al procesar los datos:", error);
-        });
-    
-    } else {
-        alert('Ingrese datos válidos.');
-    }
+    // Insersion del producto
+    fetch("agregar_producto.pl", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(producto)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Datos procesados correctamente:", data);
+        otraFuncion();
+    })
+    .catch(error => {
+        console.error("Error al procesar los datos:", error);
+    });
+
 }
