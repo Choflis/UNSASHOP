@@ -12,7 +12,7 @@ $cgi->charset("UTF-8");
 print $cgi->header('application/json');
 my $json_data = $cgi->param('POSTDATA');
 
-my $producto = decode_json($json_data);
+my $producto = decode_json($json_input);
 
 my $nombreP = $producto->{'nombre'};
 my $precioP = $producto->{'precio'};
@@ -39,16 +39,16 @@ sub validate_data {
         $errors{nombre} = "Ingrese un nombre válido.";
     }
 
-    if ($precioP > 100 || $precioP < 0) {
-        $errors{precio} = "Ingrese un precio válido."; #EXPRESION REGULAR NUMEROS
+    if ($precioP =~ /^\d+$/ && ($precioP > 100 || $precioP < 0)) {
+        $errors{precio} = "Ingrese un precio válido.";
     }
 
-    if (!$imagenP || length($imagenP) == 0 || length($imagenP) > 30) {
-        $errors{imagen} = "Ingrese una imagen válida."; #EXPRESION REGULAR DE LINK
+    if (!$imagenP || length($imagenP) == 0 || length($imagenP) > 30 || $imagenP !~ /^(?:https?|ftp):\/\/\S+$/i) {
+        $errors{imagen} = "Ingrese una imagen válida.";
     }
     
-    if ($stockP > 1000 || $stockP <= 0) {
-        $errors{stock} = "Ingrese un stock válido."; #EXPRESION REGULAR NUMEROS
+    if ($stockP !~ /^\d+$/ || $stockP > 1000 || $stockP <= 0) {
+        $errors{stock} = "Ingrese un stock válido.";
     }
 
     #VERIFICAR QUE EL PRODCUTO NO EXISTA YA - NOMBRE
@@ -74,11 +74,8 @@ if (%errors == 0){
     my $sth = $dbh->prepare("INSERT INTO producto (`vendedor_id`, `nombre`, `imagen`, `precio`, `stock`) VALUES (?, ?, ?, ?, ?)");
     $sth->execute($user_id, $nombreP, $imagenP, $precioP, $stockP);
 
-    my $response = { success => 1, message => "Producto agregado correctamente" };
-    print encode_json($response);
+    print $cgi->redirect("http://localhost/UNSASHOP/perfilV.html");
     
 } else {
-    my $response = { success => 0, message => "Hubo errores de validación al agregar el producto" };
-    print encode_json($response);
-
+    print $cgi->redirect("http://localhost/UNSASHOP/perfilV.html");
 }
