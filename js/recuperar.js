@@ -13,12 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const correo = correoInput.value;
         const pregunta1 = pregunta1Input.value;
         const pregunta2 = pregunta2Input.value;
-        let tipoUsuario = ''; // Inicializar variable para guardar el tipo de usuario seleccionado
+        let tipoUsuario = '';
 
-        // Iterar sobre los radios para encontrar el seleccionado
         tipoUsuarioRadios.forEach(function(radio) {
             if (radio.checked) {
-                tipoUsuario = radio.value; // Obtener el valor del radio seleccionado
+                tipoUsuario = radio.value;
             }
             console.log("TIPO : ", tipoUsuario);
         });
@@ -49,8 +48,75 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             if (data.valido) {
                 console.log("CONSULTA EXITOSA: ", data);
-                document.querySelector(".blurOverlay").style.display = "block";
-                document.querySelector(".form-popup").style.display = "block";
+                const showPopupBtn = document.querySelector(".login-btn");
+                const formPopup = document.querySelector(".form-popup");
+                const hidePopupBtn = formPopup.querySelector(".close-btn");
+                const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+                console.log(showPopupBtn);
+                //animacion popup
+                showPopupBtn.addEventListener("click", () => {
+                document.body.classList.toggle("show-popup");
+                });
+
+                //oculta animacion 
+                hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
+            
+                // Mostrar ventana emergente para cambiar la contraseña
+                const newPasswordInput = document.getElementById("password1R");
+                const confirmPasswordInput = document.getElementById("password2R");
+                
+                // Agregar evento para el envío del formulario de cambio de contraseña
+                formPopup.addEventListener("submit", function(event) {
+                    event.preventDefault();
+            
+                    const newPassword = newPasswordInput.value;
+                    const confirmPassword = confirmPasswordInput.value;
+            
+                    if (newPassword.trim() === '' || confirmPassword.trim() === '') {
+                        alert("Por favor complete todos los campos.");
+                        return;
+                    }
+            
+                    if (newPassword !== confirmPassword) {
+                        alert("Las contraseñas no coinciden.");
+                        return;
+                    }
+
+                    if (newPassword.length > 30) {
+                        alert("Las contraseñas es demasiado larga.");
+                        return;
+                    }
+            
+                    // Realizar la solicitud para cambiar la contraseña
+                    fetch('cgi-bin/cambiar_contrasena.pl', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            tipoUsuario: tipoUsuario,
+                            correo: correo,
+                            nuevaContraseña: newPassword
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Error en la solicitud al servidor para cambiar la contraseña.");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            alert("La contraseña se ha cambiado correctamente.");
+                        } else {
+                            alert("Hubo un error al cambiar la contraseña.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Hubo un error al procesar la solicitud para cambiar la contraseña.");
+                    });
+                });
             } else {
                 alert("Los datos ingresados no son válidos.");
             }
@@ -63,3 +129,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
     hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
 });
+//

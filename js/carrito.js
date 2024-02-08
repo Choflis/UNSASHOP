@@ -163,6 +163,12 @@
             cantidadElement.dataset.cantidad = cantidadActual;
             console.log("cantidad: ", cantidadActual);
             selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
+            const p = cantidadElement.parentNode;
+            const a = p.parentNode;
+            const idPr = a.getAttribute('data-id');
+            const elemento = document.querySelector(`[data-id="${idPr}"]`);
+            elemento.setAttribute('data-cantidad', cantidadActual);
+            console.log("ACT: ", elemento.getAttribute('data-cantidad'));
             actualizarTotalCarrito();
         }
     }

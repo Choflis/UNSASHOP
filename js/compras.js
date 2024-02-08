@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var totalFinal = pagarButton.value;
         console.log("totalFinal entrante:", totalFinal);
         console.log("productos seleccionados: ", cantidadesPorId);
-    
+        
         var productosCLA = [];
         var productosCLH = {};
         Object.entries(cantidadesPorId).forEach(([idC, cantidadC]) => {

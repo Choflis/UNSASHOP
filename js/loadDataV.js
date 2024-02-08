@@ -147,3 +147,69 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+function agregarProdu(){
+    console.log("...");
+    var nombre = document.getElementById('nombre-popup').value;
+    var imagen = document.getElementById('imagen-popup').value;
+    var precio = document.getElementById('precio-popup').value;
+    var stock = document.getElementById('stock-popup').value;
+    
+    if (nombre && imagen && precio && stock) {
+        console.log("nombre: ", nombre, "imagen", imagen, "precio", precio, "stock", stock);
+
+        fetch('cgi-bin/agregar_producto.pl', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                imagen: imagen,
+                precio: precio,
+                stock: stock
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Datos procesados correctamente:", data);
+            // Llama a cargarProductos y ocultarElementosVacios después de procesar los datos
+            //mostrarUltimoProducto();
+            cargarProductos();
+            ocultarElementosVacios();
+            cerrarPopup();
+            window.location.href = 'indexV.html';
+        })
+        .catch(error => {
+            console.error("Error al procesar los datos:", error);
+        });
+
+    } else {
+        alert('Por favor, completa todos los campos.');
+    };
+}
+/*function mostrarUltimoProducto() {
+    const productosContainer = document.getElementById("productos-container");
+    const items = productosContainer.querySelectorAll('.item');
+
+    // Encuentra el último producto visible
+    let ultimoProductoIndex = items.length - 1; // Índice del último elemento
+    while (ultimoProductoIndex >= 0) {
+        const ultimoProducto = items[ultimoProductoIndex];
+        const titulo = ultimoProducto.querySelector('.titulo-item').textContent.trim();
+        const imgSrc = ultimoProducto.querySelector('.img-item').getAttribute('src').trim();
+        const precio = ultimoProducto.querySelector('.precio-item').textContent.trim();
+
+        // Considera elementos con display: none
+        const isVisible = window.getComputedStyle(ultimoProducto).display !== 'none';
+
+        if (isVisible && titulo && imgSrc && precio && !titulo.includes('Agrega un producto')) {
+            ultimoProducto.style.display = "block";
+            break;
+        }
+
+        ultimoProductoIndex--;
+    }
+}*/
+
+
+//

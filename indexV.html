@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/agregarCarrito.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/carrito.css">
     <link rel="stylesheet" href="css/indexV.css">
-    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--<script src="js/carrito.js" async></script>-->
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
@@ -224,49 +223,9 @@
                 <input type="number" id="precio-popup">
                 <label for="stock-popup">Stock:</label>
                 <input type="number" min="1" id="stock-popup">
-                <button class="boton-add" id="botonAgregarProducto">Agregar Producto</button>
+                <button class="boton-add" id="botonAgregarProducto" onclick="agregarProdu()">Agregar Producto</button>
 
-<script>
-    // Obtenemos el botón por su ID
-    var botonAgregarProducto = document.getElementById('botonAgregarProducto');
 
-    // Asignamos la función agregarProducto() al evento onclick del botón
-    botonAgregarProducto.onclick = function() {
-        console.log("...");
-        var nombre = document.getElementById('nombre-popup').value;
-        var imagen = document.getElementById('imagen-popup').value;
-        var precio = document.getElementById('precio-popup').value;
-        var stock = document.getElementById('stock-popup').value;
-        
-        if (nombre && imagen && precio && stock) {
-            console.log("nombre: ", nombre, "imagen", imagen, "precio", precio, "stock", stock);
-
-            fetch('cgi-bin/agregar_producto.pl', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nombre: nombre,
-                    imagen: imagen,
-                    precio: precio,
-                    stock: stock
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Datos procesados correctamente:", data);
-                cerrarPopup();
-            })
-            .catch(error => {
-                console.error("Error al procesar los datos:", error);
-            });
-
-        } else {
-            alert('Por favor, completa todos los campos.');
-        }
-    };
-</script>
             </div>
         
         <div class="carrito" id="carrito">
@@ -312,7 +271,7 @@
                 <div class="fila">
                     <strong>Tu Total</strong>
                     <span class="carrito-precio-total">
-                        s/.1.00
+                        s/.0.00
                     </span>
                 </div>
                 <button value="0.00" class="btn-pagar" id="pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
